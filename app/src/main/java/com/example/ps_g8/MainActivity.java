@@ -24,9 +24,14 @@ public class MainActivity extends AppCompatActivity {
         leerListaPeli();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
     public void Start(View view){
         Intent start = new Intent(this, MainActivity2.class);
-        startActivity(start); // aaaaa
+        startActivity(start);
     }
 
     public void leerListaPeli() throws FileNotFoundException {

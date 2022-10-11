@@ -1,28 +1,34 @@
 package com.example.ps_g8;
 
 public class Pelicula {
-    private String nombre;
+    private String name;
     private int año;
     private String genero;
 
-    public String getNombre() {
-        return nombre;
+    public Pelicula(String name, int año, String genero) {
+        this.name = name;
+        this.año = año;
+        this.genero = genero;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAño() {
         return año;
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public void setAño(int año) {
         this.año = año;
+    }
+
+    public String getGenero() {
+        return genero;
     }
 
     public void setGenero(String genero) {
