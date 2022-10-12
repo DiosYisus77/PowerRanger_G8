@@ -17,11 +17,11 @@ public class Database {
     }
 
     public void cargarListaPelicula() throws FileNotFoundException {
-        File f = new File("C:\\Users\\ddela\\Desktop\\Lista Películas.txt");
+        File f = new File("C:\\Users\\ddela\\AndroidStudioProjects\\PowerRanger_G8\\app\\src\\main\\res\\raw\\peliculas.txt");
         Scanner sc = new Scanner(f);
         int i =0;
-        sc.nextLine();
         while (sc.hasNextLine()) {
+            sc.nextLine();
             String nombre = sc.nextLine();
             int año = Integer.parseInt(sc.nextLine());
             String genero = sc.nextLine();
