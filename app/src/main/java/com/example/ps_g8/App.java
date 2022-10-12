@@ -10,6 +10,7 @@ public class App {
 
     public static void main(String[] args) throws FileNotFoundException {
         DB.cargarListaPelicula();
+        DB.getPelis().get(0).getName();
         menu1.onStart();
     }
 }

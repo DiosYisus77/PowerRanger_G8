@@ -17,19 +17,17 @@ public class Database {
     }
 
     public void cargarListaPelicula() throws FileNotFoundException {
-        File f = new File("Peliculas.txt");
+        File f = new File("C:\\Users\\ddela\\Desktop\\Lista Películas.txt");
         Scanner sc = new Scanner(f);
         int i =0;
+        sc.nextLine();
         while (sc.hasNextLine()) {
-            sc.nextLine();
-            sc.findInLine("Pelicula:");
             String nombre = sc.nextLine();
-            sc.findInLine("Año:");
-            int año = sc.nextInt();
-            sc.findInLine("Genero:");
+            int año = Integer.parseInt(sc.nextLine());
             String genero = sc.nextLine();
-            sc.nextLine();
-
+            if(sc.hasNextLine()) {
+                sc.nextLine();
+            }
             Pelicula p = new Pelicula(nombre, año, genero);
             pelis.add(i,p);
             i++;
