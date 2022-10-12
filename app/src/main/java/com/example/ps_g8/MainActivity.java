@@ -14,14 +14,10 @@ import javax.net.ssl.ManagerFactoryParameters;
 
 public class MainActivity extends AppCompatActivity {
 
-    public
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        leerListaPeli();
     }
 
     @Override
@@ -34,23 +30,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(start);
     }
 
-    public void leerListaPeli() throws FileNotFoundException {
-        File f = new File("Peliculas.txt");
-        Scanner sc = new Scanner(f);
-
-        while(sc.hasNextLine()){
-            sc.nextLine();
-            sc.findInLine("Pelicula:");
-            String nombre = sc.nextLine();
-            sc.findInLine("Año:");
-            int año = sc.nextInt();
-            sc.nextLine();
-            sc.findInLine("Genero:");
-            String genero = sc.nextLine();
-            sc.nextLine();
-
-            Pelicula p = new Pelicula(nombre, año, genero);
-
-        }
-    }
 }
