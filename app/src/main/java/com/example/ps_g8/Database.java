@@ -17,7 +17,7 @@ public class Database {
     }
 
     public void cargarListaPelicula() throws FileNotFoundException {
-        File f = new File("C:\\Users\\ddela\\AndroidStudioProjects\\PowerRanger_G8\\app\\src\\main\\res\\raw\\peliculas.txt");
+        File f = new File("src/peliculas.txt");
         Scanner sc = new Scanner(f);
         int i =0;
         while (sc.hasNextLine()) {
