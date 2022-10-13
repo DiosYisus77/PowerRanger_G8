@@ -12,8 +12,7 @@ public class Database {
         return pelis;
     }
 
-    public void setPelis(ArrayList<Pelicula> pelis) {
-        this.pelis = pelis;
+    public void setPelis(ArrayList<Pelicula> pelis) {this.pelis = pelis;
     }
 
     public void cargarListaPelicula() throws FileNotFoundException {
@@ -34,9 +33,4 @@ public class Database {
         }
     }
 
-    public ArrayList<Pelicula> mostrarPelis(){
-
-
-
-    }
 }
