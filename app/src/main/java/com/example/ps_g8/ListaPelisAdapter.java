@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ListaPelisAdapter extends RecyclerView.Adapter<ListaPelisAdapter.PeliculaViewHolder> {
+/*public class ListaPelisAdapter extends RecyclerView.Adapter<ListaPelisAdapter.PeliculaViewHolder> {
     public Database userData;
     public ListaPelisAdapter(Database userData) {
         this.userData = userData;
@@ -47,3 +47,5 @@ public class ListaPelisAdapter extends RecyclerView.Adapter<ListaPelisAdapter.Pe
         }
     }
 }
+
+ */

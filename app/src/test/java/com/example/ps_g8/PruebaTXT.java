@@ -14,7 +14,8 @@ public class PruebaTXT {
         ArrayList<Pelicula> peli = new ArrayList<Pelicula>();
         db.cargarListaPelicula();
         peli = db.getListP();
-
+        System.out.println(peli.get(1).getTitulo());
+        System.out.println(peli.get(2).getTitulo());
         assertEquals(peli, db.getListP());
     }
 }

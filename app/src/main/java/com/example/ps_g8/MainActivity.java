@@ -28,11 +28,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void Start(View view){
         Intent start = new Intent(this, MainActivity2.class);
-        //start.putExtra("userData", userData);
         startActivity(start);
     }
-
 }

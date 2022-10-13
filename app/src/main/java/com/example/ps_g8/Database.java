@@ -14,7 +14,7 @@ public class Database implements Serializable {
     }
 
     public void cargarListaPelicula() throws FileNotFoundException {
-        File f = new File("src/main/peliculas.txt");
+        File f = new File("C:\\Users\\diosy\\AndroidStudioProjects\\PowerRanger_G8\\app\\src\\main\\res\\raw\\peliculas");
         Scanner sc = new Scanner(f);
         int i =0;
         while (sc.hasNextLine()) {
@@ -31,4 +31,14 @@ public class Database implements Serializable {
         }
     }
 
+    public String[] listToString() {
+        String[] listaTitulo = {"1","2","3"};
+        int i = 1;
+        for (Pelicula p: listP) {
+            String s = p.getTitulo();
+            listaTitulo[i]=s;
+            i++;
+        }
+        return listaTitulo;
+    }
 }
