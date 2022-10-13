@@ -2,20 +2,19 @@ package com.example.ps_g8;
 
 import  java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Database implements Serializable {
-    private ArrayList<Pelicula> listP = new ArrayList<Pelicula>();
+    private static ArrayList<Pelicula> listP = new ArrayList<>();
 
     public ArrayList<Pelicula> getListP() {
         return listP;
     }
 
     public void cargarListaPelicula() throws FileNotFoundException {
-        File f = new File("src/peliculas.txt");
+        File f = new File("src/main/peliculas.txt");
         Scanner sc = new Scanner(f);
         int i =0;
         while (sc.hasNextLine()) {

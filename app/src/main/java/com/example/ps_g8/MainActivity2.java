@@ -8,10 +8,8 @@ import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    private Database DB;
-
-    RecyclerView listaPelis;
-    ArrayList<Pelicula> listaArrayPelis;
+    private Database DB = new Database();
+    private RecyclerView listaPelis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

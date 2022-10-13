@@ -15,11 +15,10 @@ import javax.net.ssl.ManagerFactoryParameters;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Database DB;
+    private Database DB = new Database();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Button startButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         try {
@@ -27,11 +26,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        //startButton = (Button) findViewById(R.id.startButton);
-        //startButton.setOnClickListener(view -> {
-            //Call to login method from userAccess
-
-        }
+    }
 
 
     public void Start(View view){
