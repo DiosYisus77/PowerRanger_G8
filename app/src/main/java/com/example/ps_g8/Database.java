@@ -1,6 +1,6 @@
 package com.example.ps_g8;
 
-import java.io.File;
+import  java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -32,5 +32,11 @@ public class Database {
             pelis.add(i,p);
             i++;
         }
+    }
+
+    public ArrayList<Pelicula> mostrarPelis(){
+
+
+
     }
 }

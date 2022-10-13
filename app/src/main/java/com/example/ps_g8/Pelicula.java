@@ -1,22 +1,23 @@
 package com.example.ps_g8;
 
 public class Pelicula {
-    private String name;
-    private int año;
-    private String genero;
+    private String Titulo;
+    private int Año;
+    private String Genero;
 
-    public Pelicula(String name, int año, String genero) {
-        this.name = name;
-        this.año = año;
-        this.genero = genero;
+    public Pelicula(String titulo, int año, String genero) {
+        this.Titulo = titulo;
+        this.Año = Año;
+        this.Genero = genero;
     }
 
-    public String getName() {
-        return name;
+    public String getTitulo() {
+
+        return titulo;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitulo(String titulo) {
+        this.Titulo = titulo;
     }
 
     public int getAño() {
@@ -24,10 +25,11 @@ public class Pelicula {
     }
 
     public void setAño(int año) {
-        this.año = año;
+        this.Año = año;
     }
 
     public String getGenero() {
+
         return genero;
     }
 
