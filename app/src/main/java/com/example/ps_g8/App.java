@@ -10,9 +10,9 @@ public class App {
 
     public static void main(String[] args) throws FileNotFoundException {
         DB.cargarListaPelicula();
-        DB.getPelis().get(0).getTitulo();
-        DB.getPelis().get(0).getAño();
-        DB.getPelis().get(0).getGenero();
+        DB.getListP().get(0).getTitulo();
+        DB.getListP().get(0).getAño();
+        DB.getListP().get(0).getGenero();
         menu1.onStart();
     }
 }

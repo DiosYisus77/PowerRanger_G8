@@ -14,10 +14,17 @@ import javax.net.ssl.ManagerFactoryParameters;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Database DB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        try {
+            DB.cargarListaPelicula();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

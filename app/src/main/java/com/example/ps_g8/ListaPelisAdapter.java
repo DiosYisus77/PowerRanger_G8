@@ -10,10 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
 public class ListaPelisAdapter extends RecyclerView.Adapter<ListaPelisAdapter.PeliculaViewHolder> {
-    private final String pelis = DB.getPelis().get(0).getTitulo();
+    private final String pelis = DB.getListP().get(0).getTitulo();
     @NonNull
     @Override
     public PeliculaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

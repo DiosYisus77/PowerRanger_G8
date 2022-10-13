@@ -13,8 +13,8 @@ public class PruebaTXT {
         Database db= new Database();
         ArrayList<Pelicula> peli = new ArrayList<Pelicula>();
         db.cargarListaPelicula();
-        peli = db.getPelis();
+        peli = db.getListP();
 
-        assertEquals(peli, db.getPelis());
+        assertEquals(peli, db.getListP());
     }
 }

@@ -5,14 +5,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Database {
-    private ArrayList<Pelicula> pelis = new ArrayList<Pelicula>();
+public final class Database {
+    private static ArrayList<Pelicula> listP = new ArrayList<Pelicula>();
 
-    public ArrayList<Pelicula> getPelis() {
-        return pelis;
+    public ArrayList<Pelicula> getListP() {
+        return listP;
     }
 
-    public void setPelis(ArrayList<Pelicula> pelis) {this.pelis = pelis;
+    public void setListP(ArrayList<Pelicula> listP) {this.listP = listP;
     }
 
     public void cargarListaPelicula() throws FileNotFoundException {
@@ -28,7 +28,7 @@ public class Database {
                 sc.nextLine();
             }
             Pelicula p = new Pelicula(nombre, año, genero);
-            pelis.add(i,p);
+            listP.add(i,p);
             i++;
         }
     }

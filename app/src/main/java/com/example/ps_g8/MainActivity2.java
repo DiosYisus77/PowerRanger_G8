@@ -20,7 +20,7 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_item_pelis);
         listaArrayPelis = new ArrayList<>();
-        listaArrayPelis = DB.getPelis();
+        listaArrayPelis = DB.getListP();
         listaPelis.setLayoutManager(new LinearLayoutManager(this));
         ListaPelisAdapter adapter = new ListaPelisAdapter();
         listaPelis.setAdapter(adapter);
