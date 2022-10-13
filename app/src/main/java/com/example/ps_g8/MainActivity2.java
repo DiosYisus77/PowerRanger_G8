@@ -25,6 +25,13 @@ public class MainActivity2 extends AppCompatActivity {
         ListaPelisAdapter adapter = new ListaPelisAdapter();
         listaPelis.setAdapter(adapter);
 
-
     }
-}
+        public ArrayList<String>listanombre() {
+        ArrayList<String> nombre = new ArrayList<>();
+            for (Pelicula p : listaArrayPelis) {
+                 String titulo = p.getTitulo();
+                 nombre.add(titulo);
+
+            }
+        return nombre;}
+    }
