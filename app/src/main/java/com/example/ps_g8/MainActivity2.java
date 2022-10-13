@@ -1,13 +1,9 @@
 package com.example.ps_g8;
 
-import static com.example.ps_g8.App.DB;
-
+import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-
 import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
@@ -19,19 +15,16 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_item_pelis);
+
         listaArrayPelis = new ArrayList<>();
-        listaArrayPelis = DB.getListP();
-        listaPelis.setLayoutManager(new LinearLayoutManager(this));
-        ListaPelisAdapter adapter = new ListaPelisAdapter();
+        Database userData = (Database) getIntent().getSerializableExtra("userData");
+        ListaPelisAdapter adapter = new ListaPelisAdapter(userData);
+        listaArrayPelis = userData.getPelis();
         listaPelis.setAdapter(adapter);
 
-    }
-        public ArrayList<String>listanombre() {
-        ArrayList<String> nombre = new ArrayList<>();
-            for (Pelicula p : listaArrayPelis) {
-                 String titulo = p.getTitulo();
-                 nombre.add(titulo);
+        System.out.println(listaArrayPelis);
+        listaPelis.setLayoutManager(new LinearLayoutManager(this));
 
-            }
-        return nombre;}
+
     }
+}

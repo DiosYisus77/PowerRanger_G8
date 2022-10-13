@@ -2,17 +2,16 @@ package com.example.ps_g8;
 
 import  java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public final class Database {
-    private static ArrayList<Pelicula> listP = new ArrayList<Pelicula>();
+public class Database implements Serializable {
+    private ArrayList<Pelicula> pelis = new ArrayList<Pelicula>();
 
-    public ArrayList<Pelicula> getListP() {
-        return listP;
-    }
-
-    public void setListP(ArrayList<Pelicula> listP) {this.listP = listP;
+    public ArrayList<Pelicula> getPelis() {
+        return pelis;
     }
 
     public void cargarListaPelicula() throws FileNotFoundException {
@@ -28,7 +27,7 @@ public final class Database {
                 sc.nextLine();
             }
             Pelicula p = new Pelicula(nombre, año, genero);
-            listP.add(i,p);
+            pelis.add(p);
             i++;
         }
     }

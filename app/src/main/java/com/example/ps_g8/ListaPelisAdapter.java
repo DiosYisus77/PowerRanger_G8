@@ -1,7 +1,5 @@
 package com.example.ps_g8;
 
-import static com.example.ps_g8.App.DB;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ListaPelisAdapter extends RecyclerView.Adapter<ListaPelisAdapter.PeliculaViewHolder> {
-    private final String pelis = DB.getListP().get(0).getTitulo();
+    public Database userData;
+    public ListaPelisAdapter(Database userData) {
+        this.userData = userData;
+    }
+
     @NonNull
     @Override
     public PeliculaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -21,14 +23,17 @@ public class ListaPelisAdapter extends RecyclerView.Adapter<ListaPelisAdapter.Pe
 
     @Override
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
-        holder.nombrePeli.setText(pelis.get(position).getTitulo());
-        holder.añoPeli.setText(pelis.get(position).getAño());
-        holder.generoPeli.setText(pelis.get(position).getGenero());
+        for (int i = 0; i<userData.getPelis().size();i++){
+            Pelicula pelis = new Pelicula(userData.getPelis().get(i).getTitulo(), userData.getPelis().get(i).getAño(), userData.getPelis().get(i).getGenero());
+            holder.nombrePeli.setText(pelis.getTitulo());
+            holder.añoPeli.setText(pelis.getAño());
+            holder.generoPeli.setText(pelis.getGenero());
+        }
     }
 
     @Override
     public int getItemCount() {
-        return pelis.size();
+        return userData.getPelis().size();
         }
 
     public class PeliculaViewHolder extends RecyclerView.ViewHolder {
