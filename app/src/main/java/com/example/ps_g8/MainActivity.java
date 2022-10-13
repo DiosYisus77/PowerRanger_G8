@@ -17,20 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Database DB;
 
-    Database userData = new Database();
-    @Override
-    protected void onStart() {
-        super.onStart();
-        try {
-            userData.cargarListaPelicula();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button startButton;
+        //Button startButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         try {
@@ -38,18 +27,17 @@ public class MainActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        startButton = (Button) findViewById(R.id.startButton);
-        startButton.setOnClickListener(view -> {
+        //startButton = (Button) findViewById(R.id.startButton);
+        //startButton.setOnClickListener(view -> {
             //Call to login method from userAccess
-            Intent start = new Intent(this, MainActivity2.class);
-            start.putExtra("userData", userData);
-            startActivity(start);
-        });
-    }
+
+        }
 
 
     public void Start(View view){
-
+        Intent start = new Intent(this, MainActivity2.class);
+        //start.putExtra("userData", userData);
+        startActivity(start);
     }
 
 }

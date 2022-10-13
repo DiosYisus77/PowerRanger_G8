@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
 
+    private Database DB;
+
     RecyclerView listaPelis;
     ArrayList<Pelicula> listaArrayPelis;
 
@@ -19,12 +21,10 @@ public class MainActivity2 extends AppCompatActivity {
         listaArrayPelis = new ArrayList<>();
         Database userData = (Database) getIntent().getSerializableExtra("userData");
         ListaPelisAdapter adapter = new ListaPelisAdapter(userData);
-        listaArrayPelis = userData.getPelis();
+        listaArrayPelis = userData.getListP();
         listaPelis.setAdapter(adapter);
 
         System.out.println(listaArrayPelis);
         listaPelis.setLayoutManager(new LinearLayoutManager(this));
-
-
     }
 }

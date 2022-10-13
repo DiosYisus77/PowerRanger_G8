@@ -23,8 +23,8 @@ public class ListaPelisAdapter extends RecyclerView.Adapter<ListaPelisAdapter.Pe
 
     @Override
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
-        for (int i = 0; i<userData.getPelis().size();i++){
-            Pelicula pelis = new Pelicula(userData.getPelis().get(i).getTitulo(), userData.getPelis().get(i).getAño(), userData.getPelis().get(i).getGenero());
+        for (int i = 0; i<userData.getListP().size();i++){
+            Pelicula pelis = new Pelicula(userData.getListP().get(i).getTitulo(), userData.getListP().get(i).getAño(), userData.getListP().get(i).getGenero());
             holder.nombrePeli.setText(pelis.getTitulo());
             holder.añoPeli.setText(pelis.getAño());
             holder.generoPeli.setText(pelis.getGenero());
@@ -33,7 +33,7 @@ public class ListaPelisAdapter extends RecyclerView.Adapter<ListaPelisAdapter.Pe
 
     @Override
     public int getItemCount() {
-        return userData.getPelis().size();
+        return userData.getListP().size();
         }
 
     public class PeliculaViewHolder extends RecyclerView.ViewHolder {

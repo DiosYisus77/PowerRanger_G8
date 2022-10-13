@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Database implements Serializable {
-    private ArrayList<Pelicula> pelis = new ArrayList<Pelicula>();
+    private ArrayList<Pelicula> listP = new ArrayList<Pelicula>();
 
-    public ArrayList<Pelicula> getPelis() {
-        return pelis;
+    public ArrayList<Pelicula> getListP() {
+        return listP;
     }
 
     public void cargarListaPelicula() throws FileNotFoundException {
@@ -27,7 +27,7 @@ public class Database implements Serializable {
                 sc.nextLine();
             }
             Pelicula p = new Pelicula(nombre, año, genero);
-            pelis.add(p);
+            listP.add(p);
             i++;
         }
     }
