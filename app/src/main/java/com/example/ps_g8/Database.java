@@ -14,7 +14,7 @@ public class Database implements Serializable {
     }
 
     public void cargarListaPelicula() throws FileNotFoundException {
-        File f = new File("C:\\Users\\diosy\\AndroidStudioProjects\\PowerRanger_G8\\app\\src\\main\\res\\raw\\peliculas");
+        File f = new File("peliculas.txt");
         Scanner sc = new Scanner(f);
         int i =0;
         while (sc.hasNextLine()) {
