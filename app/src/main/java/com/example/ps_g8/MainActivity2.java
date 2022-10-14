@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class MainActivity2 extends AppCompatActivity{
 
     private Database DB = new Database();
     private ListView lv1;
+    private TextView vista1;
     private ArrayAdapter<String> adapter;
     private List<String> listTitulo = new ArrayList<>();
     String[] s ={"a","b","c","d"};

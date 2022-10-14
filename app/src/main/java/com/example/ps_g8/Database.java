@@ -26,17 +26,17 @@ public class Database implements Serializable {
                 sc.nextLine();
             }
             Pelicula p = new Pelicula(nombre, año, genero);
-            listP.add(p);
+            listP.add(i,p);
             i++;
         }
     }
 
     public String[] listToString() {
-        String[] listaTitulo = {"1","2","3"};
-        int i = 1;
+        String[] listaTitulo = {"1. Interstellar 2014 Ciencia Ficcion","2. La casa Gucci 2021 Drama","3. Avatar 2009 Ciencia Ficcion"};
+        int i = 0;
         for (Pelicula p: listP) {
             String s = p.getTitulo();
-            listaTitulo[i]=s;
+            listaTitulo[i]= s;
             i++;
         }
         return listaTitulo;
