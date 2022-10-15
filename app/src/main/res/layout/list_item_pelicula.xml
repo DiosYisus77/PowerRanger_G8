@@ -25,8 +25,8 @@
             android:layout_height="0dp"
             android:layout_weight="50"
             android:gravity="center|left"
-            android:textStyle="bold"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewDes"
@@ -36,4 +36,33 @@
             android:gravity="center|left"
             android:text="TextView" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="80dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/toggleButtonMeGusta"
+        android:layout_width="36dp"
+        android:layout_height="38dp"
+        android:layout_weight="1"
+        android:background="@drawable/toggle_selector"
+        android:checked="true"
+        android:onClick="me_gusta"
+        android:textOff=""
+        android:textOn="" />
+
+    <ToggleButton
+        android:id="@+id/toggleButtonVisto"
+        android:layout_width="36dp"
+        android:layout_height="38dp"
+        android:background="@drawable/visto_selector"
+        android:checked="false"
+        android:onClick="visto"
+        android:textOff=""
+        android:textOn="" />
+
 </LinearLayout>
