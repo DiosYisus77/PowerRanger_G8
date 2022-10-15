@@ -22,10 +22,7 @@ public class MainActivity2 extends AppCompatActivity{
 
     private Database DB = new Database();
     private ListView lv1;
-    private TextView vista1;
-    private ArrayAdapter<String> adapter;
-    private List<String> listTitulo = new ArrayList<>();
-    String[] s ={"a","b","c","d"};
+    private List<Pelicula> lst;
 
 
     @SuppressLint("MissingInflatedId")
@@ -36,35 +33,20 @@ public class MainActivity2 extends AppCompatActivity{
 
         lv1 = (ListView) findViewById(R.id.lv1);
 
-        try {
-            DB.cargarListaPelicula();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        String [] listTitulo = DB.listToString();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listTitulo);
+        CustomAdapter adapter=new CustomAdapter(this, GetData());
         lv1.setAdapter(adapter);
-
-
-
-
-
-        /*listaArrayPelis = new ArrayList<>();
-        Database userData = (Database) getIntent().getSerializableExtra("userData");
-        ListaPelisAdapter adapter = new ListaPelisAdapter(userData);
-        listaArrayPelis = userData.getListP();
-        listaPelis.setAdapter(adapter);
-
-        System.out.println(listaArrayPelis);
-        listaPelis.setLayoutManager(new LinearLayoutManager(this));
-
-         */
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    private List<Pelicula> GetData() {
+        lst=new ArrayList<>();
+        lst.add(new Pelicula(1,R.drawable.spiderman,"SPIDERMAN","2002"));
+        lst.add(new Pelicula(2,R.drawable.titanic,"TITANIC","1997"));
+        lst.add(new Pelicula(3,R.drawable.starwars,"STAR WARS","1977"));
+        lst.add(new Pelicula(4,R.drawable.elhombredeacero,"EL HOMBRE DE ACERO","2013"));
+        lst.add(new Pelicula(5,R.drawable.jumanji,"JUMANJI","1995"));
+        lst.add(new Pelicula(6,R.drawable.sinperdon,"SIN PERDÓN","1992"));
+        lst.add(new Pelicula(7,R.drawable.matrix,"MATRIX","1999"));
 
-
+        return lst;
     }
 }

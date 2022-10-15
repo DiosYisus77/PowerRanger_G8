@@ -16,7 +16,7 @@ public class Database implements Serializable {
     public void cargarListaPelicula() throws FileNotFoundException {
         File f = new File("peliculas.txt");
         Scanner sc = new Scanner(f);
-        int i =0;
+        int i =1;
         while (sc.hasNextLine()) {
             sc.nextLine();
             String nombre = sc.nextLine();
@@ -25,8 +25,8 @@ public class Database implements Serializable {
             if(sc.hasNextLine()) {
                 sc.nextLine();
             }
-            Pelicula p = new Pelicula(nombre, año, genero);
-            listP.add(i,p);
+            //Pelicula p = new Pelicula(i, nombre, año, genero);
+            //listP.add(i,p);
             i++;
         }
     }
