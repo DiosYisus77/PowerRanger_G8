@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import java.util.List;
 
@@ -40,6 +41,8 @@ public class CustomAdapter extends BaseAdapter {
         ImageView ImageViewPelicula;
         TextView TextViewNombre;
         TextView TextViewDes;
+        ToggleButton ToggleButtonMeGusta = null;
+        ToggleButton ToggleButtonVisto = null;
 
         Pelicula pelicula=lst.get(i);
 
@@ -49,10 +52,15 @@ public class CustomAdapter extends BaseAdapter {
         ImageViewPelicula=view.findViewById(R.id.imageViewPelicula);
         TextViewNombre=view.findViewById(R.id.textViewNombre);
         TextViewDes=view.findViewById(R.id.textViewDes);
+        ToggleButtonMeGusta.findViewById(R.id.toggleButtonMeGusta);
+        ToggleButtonVisto.findViewById(R.id.toggleButtonVisto);
 
         ImageViewPelicula.setImageResource(pelicula.getImagen());
         TextViewNombre.setText(pelicula.getTitulo());
         TextViewDes.setText(pelicula.getDescripcion());
+        ToggleButtonMeGusta.setChecked(pelicula.isMegusta());
+        ToggleButtonVisto.setChecked(pelicula.isVisto());
+
 
         return view;
     }

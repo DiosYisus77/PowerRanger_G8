@@ -2,10 +2,14 @@ package com.example.ps_g8;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +27,9 @@ public class MainActivity2 extends AppCompatActivity{
     private Database DB = new Database();
     private ListView lv1;
     private List<Pelicula> lst;
+    private ToggleButton tgbtn1;
+    private ToggleButton tgbtn2;
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -35,17 +42,35 @@ public class MainActivity2 extends AppCompatActivity{
 
         CustomAdapter adapter=new CustomAdapter(this, GetData());
         lv1.setAdapter(adapter);
+        tgbtn1= (ToggleButton) findViewById(R.id.toggleButtonMeGusta);
+        tgbtn2= (ToggleButton) findViewById(R.id.toggleButtonVisto);
+
     }
 
-    private List<Pelicula> GetData() {
+    public void me_gusta (View view) {
+        if (view.getId()==R.id.toggleButtonVisto) {
+            if (tgbtn1.isChecked()){
+
+            }
+        }
+    }
+    public void visto (View view) {
+        if (view.getId()==R.id.toggleButtonVisto) {
+            if (tgbtn2.isChecked()){
+
+            }
+        }
+    }
+
+    public List<Pelicula> GetData() {
         lst=new ArrayList<>();
-        lst.add(new Pelicula(1,R.drawable.spiderman,"SPIDERMAN","2002"));
-        lst.add(new Pelicula(2,R.drawable.titanic,"TITANIC","1997"));
-        lst.add(new Pelicula(3,R.drawable.starwars,"STAR WARS","1977"));
-        lst.add(new Pelicula(4,R.drawable.elhombredeacero,"EL HOMBRE DE ACERO","2013"));
-        lst.add(new Pelicula(5,R.drawable.jumanji,"JUMANJI","1995"));
-        lst.add(new Pelicula(6,R.drawable.sinperdon,"SIN PERDÓN","1992"));
-        lst.add(new Pelicula(7,R.drawable.matrix,"MATRIX","1999"));
+        lst.add(new Pelicula(1,R.drawable.spiderman,"SPIDERMAN","2002", false, false));
+        lst.add(new Pelicula(2,R.drawable.titanic,"TITANIC","1997", false, false));
+        lst.add(new Pelicula(3,R.drawable.starwars,"STAR WARS","1977", false, false));
+        lst.add(new Pelicula(4,R.drawable.elhombredeacero,"EL HOMBRE DE ACERO","2013", false, false));
+        lst.add(new Pelicula(5,R.drawable.jumanji,"JUMANJI","1995", false, false));
+        lst.add(new Pelicula(6,R.drawable.sinperdon,"SIN PERDÓN","1992", false, false));
+        lst.add(new Pelicula(7,R.drawable.matrix,"MATRIX","1999", false, false));
 
         return lst;
     }
