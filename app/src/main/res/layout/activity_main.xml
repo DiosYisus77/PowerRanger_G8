@@ -38,14 +38,13 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="188dp"
-        android:layout_height="135dp"
+        android:layout_width="142dp"
+        android:layout_height="99dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.713"
         app:srcCompat="@drawable/logo" />
 
     <ImageView
@@ -57,7 +56,42 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.325"
+        app:layout_constraintVertical_bias="0.091"
         app:srcCompat="@drawable/powerrangers" />
+
+    <EditText
+        android:id="@+id/id_Usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Usuario"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <EditText
+        android:id="@+id/id_Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="518dp" />
+
+    <Button
+        android:id="@+id/id_inicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        tools:layout_editor_absoluteX="278dp"
+        tools:layout_editor_absoluteY="442dp" />
+
+    <Button
+        android:id="@+id/id_registro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registro"
+        tools:layout_editor_absoluteX="270dp"
+        tools:layout_editor_absoluteY="507dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
