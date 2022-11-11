@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#653535">
+    android:background="#9A2323">
 
     <ImageView
         android:id="@+id/fondoRegistro"
@@ -47,15 +47,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
-        android:background="#973D3D"
-        android:backgroundTint="#974343"
+        android:backgroundTint="#239999"
+        android:shadowColor="#3E0808"
+        android:shadowDx="40"
+        android:shadowDy="40"
         android:text="Confirm"
+        app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666"
-        app:strokeColor="#5E2222" />
+        app:layout_constraintVertical_bias="0.666" />
 
     <EditText
         android:id="@+id/nombreUsuario"
