@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
         android:backgroundTint="#239999"
+        android:onClick="Registrarse"
         android:shadowColor="#3E0808"
         android:shadowDx="40"
         android:shadowDy="40"
@@ -60,26 +61,9 @@
         app:layout_constraintVertical_bias="0.666" />
 
     <EditText
-        android:id="@+id/nombreUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="Name"
-        android:textColor="#F6E7E7"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nuevoUsuario" />
-
-    <EditText
         android:id="@+id/emailRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
@@ -89,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreUsuario" />
+        tools:layout_editor_absoluteY="436dp" />
 
     <EditText
         android:id="@+id/contraseñaRegistro"
@@ -111,11 +95,9 @@
         android:id="@+id/logoAppRegistro"
         android:layout_width="138dp"
         android:layout_height="91dp"
-        app:layout_constraintBottom_toTopOf="@+id/nombreUsuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nuevoUsuario"
-        app:layout_constraintVertical_bias="0.415"
         app:srcCompat="@drawable/claqueta" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase BaseDatos) {
-        BaseDatos.execSQL("create table lista(nombre string primary key,contraseña string primary key)"); //añadir tercer parámetro de la lista
+        BaseDatos.execSQL("create table lista(email string primary key,contraseña string not null)"); //añadir tercer parámetro de la lista
 
     }
 
