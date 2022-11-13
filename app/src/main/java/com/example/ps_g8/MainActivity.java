@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -63,6 +64,28 @@ public class MainActivity extends AppCompatActivity {
 
         } else{
             Toast.makeText(this,"Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void Buscar(View view){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+
+        String usuario = et_usuario.getText().toString();
+        String contraseña = et_contraseña.getText().toString();
+
+        if(!usuario.isEmpty()){
+            Cursor fila = BaseDatos.rawQuery("select contraseña from lista where usuario =" + usuario, null);
+
+            if(((Cursor) fila).moveToFirst()){
+                et_contraseña.setText(fila.getString(0));
+                BaseDatos.close();
+            } else {
+                Toast.makeText(this, "La contraseña no es correcta", Toast.LENGTH_SHORT).show();
+                BaseDatos.close();
+            }
+        } else {
+            Toast.makeText(this, "No encontramos ninguna cuenta con esa dirección de correo electrónico", Toast.LENGTH_SHORT).show();
         }
     }
 }
