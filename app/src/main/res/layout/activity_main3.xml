@@ -23,8 +23,10 @@
         android:background="#9A2323"
         app:layout_constraintBottom_toBottomOf="@+id/confirmarRegistro"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nuevoUsuario" />
+        app:layout_constraintTop_toTopOf="@+id/nuevoUsuario"
+        app:layout_constraintVertical_bias="0.466" />
 
     <TextView
         android:id="@+id/nuevoUsuario"
@@ -61,9 +63,10 @@
         app:layout_constraintVertical_bias="0.666" />
 
     <EditText
-        android:id="@+id/emailRegistro"
+        android:id="@+id/id_Email3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
@@ -73,10 +76,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="436dp" />
+        app:layout_constraintTop_toBottomOf="@+id/logoAppRegistro" />
 
     <EditText
-        android:id="@+id/contraseñaRegistro"
+        android:id="@+id/id_Password3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -89,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailRegistro" />
+        app:layout_constraintTop_toBottomOf="@+id/id_Email3" />
 
     <ImageView
         android:id="@+id/logoAppRegistro"

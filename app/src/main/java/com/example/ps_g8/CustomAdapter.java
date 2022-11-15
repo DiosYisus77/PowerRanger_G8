@@ -52,14 +52,14 @@ public class CustomAdapter extends BaseAdapter {
         ImageViewPelicula=view.findViewById(R.id.imageViewPelicula);
         TextViewNombre=view.findViewById(R.id.textViewNombre);
         TextViewDes=view.findViewById(R.id.textViewDes);
-        ToggleButtonMeGusta.findViewById(R.id.toggleButtonMeGusta);
-        ToggleButtonVisto.findViewById(R.id.toggleButtonVisto);
+//        ToggleButtonMeGusta.findViewById(R.id.toggleButtonMeGusta);
+ //       ToggleButtonVisto.findViewById(R.id.toggleButtonVisto);
 
         ImageViewPelicula.setImageResource(pelicula.getImagen());
         TextViewNombre.setText(pelicula.getTitulo());
         TextViewDes.setText(pelicula.getDescripcion());
-        ToggleButtonMeGusta.setChecked(pelicula.isMegusta());
-        ToggleButtonVisto.setChecked(pelicula.isVisto());
+//        ToggleButtonMeGusta.setChecked(pelicula.isMegusta());
+//        ToggleButtonVisto.setChecked(pelicula.isVisto());
 
 
         return view;

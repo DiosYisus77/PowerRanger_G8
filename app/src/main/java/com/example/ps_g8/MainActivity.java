@@ -13,10 +13,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Database DB = new Database();
     private EditText et_contraseña,et_email;
 
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void register(View view){
-        Intent register = new Intent(this, MainActivity3.class);
-        startActivity(register);
+        Intent start3 = new Intent(this, MainActivity3.class);
+        startActivity(start3);
     }
 
     public void buscar(View view){
