@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             if(((Cursor) fila).moveToFirst()){
                 et_contraseña.setText(fila.getString(0));
                 BaseDatos.close();
-                Intent busqueda = new Intent(this,MainActivity5.class);
+                Intent busqueda = new Intent(this,MainActivity2.class);
                 startActivity(busqueda);
             } else {
                 Toast.makeText(this, "La contraseña no es correcta", Toast.LENGTH_SHORT).show();

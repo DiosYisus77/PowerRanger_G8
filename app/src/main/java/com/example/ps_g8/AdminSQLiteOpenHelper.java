@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
+public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     public AdminSQLiteOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -14,7 +14,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase BaseDatos) {
-        BaseDatos.execSQL("create table lista(email string primary key,contraseña string not null)"); //añadir tercer parámetro de la lista
+        BaseDatos.execSQL("create table lista(email string primary key, contraseña string not null)"); //añadir tercer parámetro de la lista
     }
 
     @Override

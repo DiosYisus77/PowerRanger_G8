@@ -33,7 +33,7 @@ public class MainActivity5 extends AppCompatActivity {
         if ((!email.isEmpty()) && (!contraseña.isEmpty())) {
             ContentValues registro = new ContentValues();
 
-            if (isUsuario(BaseDatos,email)) {
+            if (!isUsuario(email)) {
                 registro.put("email", email);
                 registro.put("contraseña", contraseña);
                 BaseDatos.insert("lista", null, registro);
@@ -46,20 +46,23 @@ public class MainActivity5 extends AppCompatActivity {
 
                 Intent confirmar = new Intent(this, MainActivity.class);
                 startActivity(confirmar);
-            }
+                //}
 
-        } else {
-            Toast.makeText(getApplicationContext(), "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
-
-    public boolean isUsuario(SQLiteDatabase BaseDatos, String email) {
-
-        Cursor fila = BaseDatos.rawQuery("select email from lista where email =" + email, null);
+    public boolean isUsuario(String email) {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+        Cursor fila = BaseDatos.rawQuery("select contraseña from lista where email =" + email, null);
         if (fila.moveToFirst()) {
+            BaseDatos.close();
             return true;
         } else {
+            BaseDatos.close();
             return false;
         }
     }
