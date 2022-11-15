@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         String contraseña = et_contraseña.getText().toString();
 
         if(!email.isEmpty()){
-            Cursor fila = BaseDatos.rawQuery("select contraseña from lista where usuario =" + email, null);
+            Cursor fila = BaseDatos.rawQuery("select contraseña from lista where email =" + email, null);
 
-            if(((Cursor) fila).moveToFirst()){
-                et_contraseña.setText(fila.getString(0));
+            if(fila.moveToFirst()){
+                //et_contraseña.setText(fila.getString(0));
                 BaseDatos.close();
                 Intent busqueda = new Intent(this,MainActivity2.class);
                 startActivity(busqueda);
