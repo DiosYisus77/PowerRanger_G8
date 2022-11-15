@@ -1,5 +1,6 @@
 package com.example.ps_g8;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -10,16 +11,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity3 extends AppCompatActivity {
+public class MainActivity5 extends AppCompatActivity {
 
     private EditText et_contraseña, et_email;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main5);
 
         et_email = (EditText) findViewById(R.id.id_Email3);
         et_contraseña =(EditText) findViewById(R.id.id_Password3);
@@ -60,10 +58,9 @@ public class MainActivity3 extends AppCompatActivity {
 
         Cursor fila = BaseDatos.rawQuery("select email from lista where email =" + email, null);
         if (fila.moveToFirst()) {
-                return true;
+            return true;
         } else {
-                return false;
+            return false;
         }
     }
-
 }

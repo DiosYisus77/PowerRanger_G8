@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void register(View view){
-        Intent start3 = new Intent(this, MainActivity3.class);
+        Intent start3 = new Intent(this, MainActivity5.class);
         startActivity(start3);
     }
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             if(((Cursor) fila).moveToFirst()){
                 et_contraseña.setText(fila.getString(0));
                 BaseDatos.close();
-                Intent busqueda = new Intent(this,MainActivity2.class);
+                Intent busqueda = new Intent(this,MainActivity5.class);
                 startActivity(busqueda);
             } else {
                 Toast.makeText(this, "La contraseña no es correcta", Toast.LENGTH_SHORT).show();
