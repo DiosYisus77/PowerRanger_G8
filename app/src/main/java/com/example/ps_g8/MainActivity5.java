@@ -23,6 +23,11 @@ public class MainActivity5 extends AppCompatActivity {
         et_contraseña =(EditText) findViewById(R.id.id_Password3);
     }
 
+    public void cancelRegister(View view){
+        Intent cancel = new Intent(this, MainActivity.class);
+        startActivity(cancel);
+    }
+
     public void Registrarse(View view) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();

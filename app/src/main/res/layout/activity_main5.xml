@@ -9,37 +9,25 @@
     tools:context=".MainActivity3">
 
   <ImageView
-      android:id="@+id/fondoRegistro"
-      android:layout_width="493dp"
-      android:layout_height="940dp"
+      android:id="@+id/background_Registro"
+      android:layout_width="1021dp"
+      android:layout_height="1023dp"
+      android:src="@drawable/background_lineas"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/fondo_carteles" />
-
-  <View
-      android:id="@+id/frameRegistro"
-      android:layout_width="282dp"
-      android:layout_height="601dp"
-      android:background="#9A2323"
-      app:layout_constraintBottom_toBottomOf="@+id/confirmarRegistro"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.496"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/nuevoUsuario"
-      app:layout_constraintVertical_bias="0.466" />
+      app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
       android:id="@+id/nuevoUsuario"
-      android:layout_width="167dp"
-      android:layout_height="32dp"
+      android:layout_width="175dp"
+      android:layout_height="43dp"
       android:layout_marginTop="120dp"
-      android:fontFamily="sans-serif-smallcaps"
-      android:text="Sign up"
+      android:fontFamily="sans-serif-black"
+      android:text="@string/str_register"
       android:textAlignment="center"
       android:textAppearance="@style/TextAppearance.AppCompat.Large"
-      android:textColor="#EBE6F3"
+      android:textColor="@color/blanquito"
       android:textSize="34sp"
       android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="parent"
@@ -48,60 +36,114 @@
 
   <Button
       android:id="@+id/confirmarRegistro"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="229dp"
+      android:layout_height="49dp"
       android:layout_marginTop="300dp"
-      android:backgroundTint="#239999"
+      android:backgroundTint="#FBE7EC"
+      android:fontFamily="monospace"
       android:onClick="Registrarse"
       android:shadowColor="#3E0808"
       android:shadowDx="40"
       android:shadowDy="40"
-      android:text="Confirm"
-      app:cornerRadius="8dp"
+      android:text="@string/str_register"
+      android:textAlignment="center"
+      android:textColor="#610505"
+      android:textStyle="bold"
+      app:cornerRadius="10dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.666" />
+      app:layout_constraintVertical_bias="0.658" />
+
+  <Button
+      android:id="@+id/cancelarRegistro"
+      android:layout_width="229dp"
+      android:layout_height="49dp"
+      android:layout_marginTop="300dp"
+      android:backgroundTint="#00FBE7EC"
+      android:fontFamily="sans-serif-condensed-medium"
+      android:onClick="cancelRegister"
+      android:text="Already have an Account?"
+      android:textAlignment="center"
+      android:textColor="@color/blanquito"
+      android:textSize="12sp"
+      android:textStyle="italic"
+      app:cornerRadius="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.77"
+      app:strokeColor="#00FFFFFF" />
 
   <EditText
       android:id="@+id/id_Email3"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="120dp"
+      android:layout_width="229dp"
+      android:layout_height="49dp"
+      android:layout_marginTop="108dp"
+      android:background="@drawable/rectangle"
+      android:clickable="false"
       android:ems="10"
+      android:fontFamily="monospace"
       android:inputType="textEmailAddress"
       android:minHeight="48dp"
-      android:text="email"
+      android:text="@string/str_email"
       android:textColor="#FAEAEA"
       android:textSize="20sp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.497"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/logoAppRegistro" />
 
   <EditText
-      android:id="@+id/id_Password3"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="32dp"
+      android:id="@+id/id_Password2"
+      android:layout_width="229dp"
+      android:layout_height="49dp"
+      android:layout_marginTop="12dp"
+      android:background="@drawable/rectangle"
       android:ems="10"
+      android:fontFamily="monospace"
       android:inputType="textPassword"
       android:minHeight="48dp"
-      android:text="password"
+      android:text="@string/str_password"
       android:textColor="#FAE8E8"
       android:textSize="20sp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.497"
+      app:layout_constraintHorizontal_bias="0.493"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/id_Email3" />
+      app:layout_constraintTop_toBottomOf="@+id/id_Email3"
+
+      />
+
+  <EditText
+      android:id="@+id/id_Password3"
+      android:layout_width="229dp"
+      android:layout_height="49dp"
+      android:layout_marginTop="72dp"
+      android:background="@drawable/rectangle"
+      android:ems="10"
+      android:fontFamily="monospace"
+      android:inputType="textPassword"
+      android:minHeight="48dp"
+      android:text="@string/str_password"
+      android:textColor="#FAE8E8"
+      android:textSize="20sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.493"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/id_Email3"
+
+      />
 
   <ImageView
       android:id="@+id/logoAppRegistro"
       android:layout_width="138dp"
       android:layout_height="91dp"
+      android:layout_marginTop="24dp"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/nuevoUsuario"
       app:srcCompat="@drawable/claqueta" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
