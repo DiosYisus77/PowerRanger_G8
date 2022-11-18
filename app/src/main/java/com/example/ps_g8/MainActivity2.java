@@ -1,6 +1,8 @@
 package com.example.ps_g8;
 
 import android.annotation.SuppressLint;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +64,7 @@ public class MainActivity2 extends AppCompatActivity{
         }
     }
 
-    public List<Pelicula> GetData() {
+    /*public List<Pelicula> GetData() {
         lst=new ArrayList<>();
         lst.add(new Pelicula(1,R.drawable.spiderman,"SPIDERMAN","2002", false, false));
         lst.add(new Pelicula(2,R.drawable.titanic,"TITANIC","1997", false, false));
@@ -72,6 +74,19 @@ public class MainActivity2 extends AppCompatActivity{
         lst.add(new Pelicula(6,R.drawable.sinperdon,"SIN PERDÓN","1992", false, false));
         lst.add(new Pelicula(7,R.drawable.matrix,"MATRIX","1999", false, false));
 
+        return lst;
+    }*/
+    public List<Pelicula> GetData(){
+        lst=new ArrayList<>();
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+        Cursor c = BaseDatos.rawQuery("select * from pelis",null);
+        do{
+            @SuppressLint("Range") String titulo = c.getString(c.getColumnIndex("nombre"));
+            @SuppressLint("Range") String año = c.getString(c.getColumnIndex("año"));
+            @SuppressLint("Range") int id = c.getInt(c.getColumnIndex("id"));
+            lst.add(new Pelicula(id,R.drawable.jumanji,titulo,año,false,false));
+        } while(c.moveToNext());
         return lst;
     }
 }

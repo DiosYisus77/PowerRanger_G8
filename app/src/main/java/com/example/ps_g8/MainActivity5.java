@@ -62,7 +62,7 @@ public class MainActivity5 extends AppCompatActivity {
     public boolean isUsuario(String email) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-        Cursor fila = BaseDatos.rawQuery("select contraseña from lista where email =" + email, null);
+        Cursor fila = BaseDatos.rawQuery("select contraseña from lista where email =?" + email, null);
         if (fila.moveToFirst()) {
             BaseDatos.close();
             return true;

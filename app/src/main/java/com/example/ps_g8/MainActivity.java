@@ -21,12 +21,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         et_email = (EditText) findViewById(R.id.id_Email);
         et_contraseña =(EditText) findViewById(R.id.id_Password);
     }
 
     public void register(View view){
-        Intent start3 = new Intent(this, MainActivity5.class);
+        Intent start3 = new Intent(this, MainActivity2.class);
         startActivity(start3);
     }
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+
 
         String email = et_email.getText().toString();
         String contraseña = et_contraseña.getText().toString();
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(fila.moveToFirst()){
                 //et_contraseña.setText(fila.getString(0));
+
                 BaseDatos.close();
                 Intent busqueda = new Intent(this,MainActivity2.class);
                 startActivity(busqueda);
