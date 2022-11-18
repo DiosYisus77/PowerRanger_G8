@@ -41,8 +41,10 @@ public class MainActivity2 extends AppCompatActivity{
         setContentView(R.layout.activity_main2);
 
         lv1 = (ListView) findViewById(R.id.lv1);
-
-        CustomAdapter adapter=new CustomAdapter(this, GetData());
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+        CustomAdapter adapter=new CustomAdapter(this, GetData(BaseDatos));
+        BaseDatos.close();
         lv1.setAdapter(adapter);
         tgbtn1= (ToggleButton) findViewById(R.id.toggleButtonMeGusta);
         tgbtn2= (ToggleButton) findViewById(R.id.toggleButtonVisto);
@@ -76,17 +78,21 @@ public class MainActivity2 extends AppCompatActivity{
 
         return lst;
     }*/
-    public List<Pelicula> GetData(){
-        lst=new ArrayList<>();
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
-        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-        Cursor c = BaseDatos.rawQuery("select * from pelis",null);
-        do{
-            @SuppressLint("Range") String titulo = c.getString(c.getColumnIndex("nombre"));
-            @SuppressLint("Range") String año = c.getString(c.getColumnIndex("año"));
-            @SuppressLint("Range") int id = c.getInt(c.getColumnIndex("id"));
-            lst.add(new Pelicula(id,R.drawable.jumanji,titulo,año,false,false));
-        } while(c.moveToNext());
+    public List<Pelicula> GetData(@NonNull SQLiteDatabase BaseDatos) {
+        lst = new ArrayList<>();
+        //AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        //SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+        Cursor c = BaseDatos.rawQuery("select * from pelis", null);
+        if (c.moveToFirst() && c.getCount() >= 1) {
+            do {
+                @SuppressLint("Range") String titulo = c.getString(c.getColumnIndex("nombre"));
+                @SuppressLint("Range") String año = c.getString(c.getColumnIndex("año"));
+                @SuppressLint("Range") int id = c.getInt(c.getColumnIndex("id"));
+                lst.add(new Pelicula(id, R.drawable.jumanji, titulo, año, false, false));
+            } while (c.moveToNext());
+
+        }
         return lst;
     }
 }
+

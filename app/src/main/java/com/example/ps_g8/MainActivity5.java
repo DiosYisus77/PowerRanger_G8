@@ -41,7 +41,7 @@ public class MainActivity5 extends AppCompatActivity {
             if (!isUsuario(email)) {
                 registro.put("email", email);
                 registro.put("contraseña", contraseña);
-                BaseDatos.insert("lista", null, registro);
+                BaseDatos.insert("listaPelicula", null, registro);
                 BaseDatos.close();
 
                 et_email.setText("");

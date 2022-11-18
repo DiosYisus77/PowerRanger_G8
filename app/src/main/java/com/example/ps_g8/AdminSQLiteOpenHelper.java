@@ -22,7 +22,7 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         BaseDatos.execSQL("create table lista(email string primary key, contraseña string not null)");
         BaseDatos.execSQL("create table pelis(id string primary key,nombre string not null, año string not null)");
         BaseDatos.execSQL("create table relacion(email string primary key,id string not null,visto string not null,gusta string not null)");
-        this.agregarPelis();
+        this.agregarPelis(BaseDatos);
     }
 
     @Override
@@ -30,75 +30,74 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     }
 
-    public void agregarPelis() {
-        SQLiteDatabase BaseDatos = this.getWritableDatabase();
+    public void agregarPelis(SQLiteDatabase BaseDatos) {
+        //SQLiteDatabase BaseDatos = this.getWritableDatabase();
         ContentValues reg = new ContentValues();
-            for (int i = 1; i <= 7; i++) {
-                switch (i) {
-                    case 1:
-                        reg.put("id", String.valueOf(i));
-                        reg.put("nombre", "SPIDERMAN");
-                        reg.put("año", "2002");
-                        BaseDatos.insert("pelis", null, reg);
-                        break;
+        for (int i = 1; i <= 7; i++) {
+            switch (i) {
+                case 1:
+                    reg.put("id", String.valueOf(i));
+                    reg.put("nombre", "SPIDERMAN");
+                    reg.put("año", "2002");
+                    BaseDatos.insert("pelis", null, reg);
+                    break;
 
-                    case 2:
-                        reg.put("id", String.valueOf(i));
-                        reg.put("nombre", "TITANIC");
-                        reg.put("año", "1997");
-                        BaseDatos.insert("pelis", null, reg);
-                        break;
+                case 2:
+                    reg.put("id", String.valueOf(i));
+                    reg.put("nombre", "TITANIC");
+                    reg.put("año", "1997");
+                    BaseDatos.insert("pelis", null, reg);
+                    break;
 
-                    case 3:
-                        reg.put("id", String.valueOf(i));
-                        reg.put("nombre", "STAR WARS");
-                        reg.put("año", "1977");
-                        BaseDatos.insert("pelis", null, reg);
-                        break;
+                case 3:
+                    reg.put("id", String.valueOf(i));
+                    reg.put("nombre", "STAR WARS");
+                    reg.put("año", "1977");
+                    BaseDatos.insert("pelis", null, reg);
+                    break;
 
-                    case 4:
-                        reg.put("id", String.valueOf(i));
-                        reg.put("nombre", "EL HOMBRE DE ACERO");
-                        reg.put("año", "2013");
-                        BaseDatos.insert("pelis", null, reg);
-                        break;
+                case 4:
+                    reg.put("id", String.valueOf(i));
+                    reg.put("nombre", "EL HOMBRE DE ACERO");
+                    reg.put("año", "2013");
+                    BaseDatos.insert("pelis", null, reg);
+                    break;
 
-                    case 5:
-                        reg.put("id", String.valueOf(i));
-                        reg.put("nombre", "JUMANJI");
-                        reg.put("año", "1995");
-                        BaseDatos.insert("pelis", null, reg);
-                        break;
+                case 5:
+                    reg.put("id", String.valueOf(i));
+                    reg.put("nombre", "JUMANJI");
+                    reg.put("año", "1995");
+                    BaseDatos.insert("pelis", null, reg);
+                    break;
 
-                    case 6:
-                        reg.put("id", String.valueOf(i));
-                        reg.put("nombre", "SIN PERDÓN");
-                        reg.put("año", "1992");
-                        BaseDatos.insert("pelis", null, reg);
-                        break;
+                case 6:
+                    reg.put("id", String.valueOf(i));
+                    reg.put("nombre", "SIN PERDÓN");
+                    reg.put("año", "1992");
+                    BaseDatos.insert("pelis", null, reg);
+                    break;
 
-                    case 7:
-                        reg.put("id", String.valueOf(i));
-                        reg.put("nombre", "MATRIX");
-                        reg.put("año", "1999");
-                        BaseDatos.insert("pelis", null, reg);
-                        break;
-                }
+                case 7:
+                    reg.put("id", String.valueOf(i));
+                    reg.put("nombre", "MATRIX");
+                    reg.put("año", "1999");
+                    BaseDatos.insert("pelis", null, reg);
+                    break;
             }
         }
+
+    }
 
     public void crearRelaciones(String email){
         SQLiteDatabase BaseDatos = this.getWritableDatabase();
         ContentValues reg = new ContentValues();
         for(int i=1; i<=7;i++){
-                reg.put("email", email);
-                reg.put("id", String.valueOf(i));
-                reg.put("visto", false);
-                reg.put("gusta",false);
-                BaseDatos.insert("relacion", null, reg);
+            reg.put("email", email);
+            reg.put("id", String.valueOf(i));
+            reg.put("visto", false);
+            reg.put("gusta",false);
+            BaseDatos.insert("relacion", null, reg);
         }
     }
 
 }
-
-
