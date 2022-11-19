@@ -80,7 +80,7 @@
         android:layout_marginTop="8dp"
         android:backgroundTint="#FBE7EC"
         android:fontFamily="monospace"
-        android:onClick="buscar"
+        android:onClick="login"
         android:shadowColor="#3E0808"
         android:shadowDx="40"
         android:text="LOGIN"

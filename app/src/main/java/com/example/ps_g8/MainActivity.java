@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText et_contraseña,et_email;
+    private EditText et_password, et_email;
 
 
     @Override
@@ -22,40 +22,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         et_email = (EditText) findViewById(R.id.id_Email);
-        et_contraseña =(EditText) findViewById(R.id.id_Password);
+        et_password = (EditText) findViewById(R.id.id_Password);
     }
 
-    public void register(View view){
+    public void register(View view) {
         Intent start3 = new Intent(this, MainActivity5.class);
         startActivity(start3);
     }
 
-    public void buscar(View view){
-
+    public void login(View view) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-
-
         String email = et_email.getText().toString();
-        String contraseña = et_contraseña.getText().toString();
+        String password = et_password.getText().toString();
 
-        if(!email.isEmpty()){
-            Cursor fila = BaseDatos.rawQuery("select contraseña from lista where email =" + email, null);
-
-            if(fila.moveToFirst()){
-                //et_contraseña.setText(fila.getString(0));
-
+        if (!email.isEmpty() && !password.isEmpty()) {
+            Cursor fila = BaseDatos.rawQuery("select * from usuario where email =" + email + " and contraseña =" + password, null);
+            if (fila.moveToFirst()) {
+                ;
                 BaseDatos.close();
-                Intent busqueda = new Intent(this,MainActivity2.class);
+                Intent busqueda = new Intent(this, MainActivity2.class);
                 startActivity(busqueda);
             } else {
-                Toast.makeText(this, "La contraseña no es correcta", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "EROR: Datos introduccions no coinciden con cuenta existente", Toast.LENGTH_SHORT).show();
                 BaseDatos.close();
             }
-        } else {
-            Toast.makeText(this, "No encontramos ninguna cuenta con esa dirección de correo electrónico", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "ERROR: Por favor, rellena todos los campos", Toast.LENGTH_SHORT).show();
         }
     }
 }

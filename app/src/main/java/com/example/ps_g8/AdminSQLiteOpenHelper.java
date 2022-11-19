@@ -21,7 +21,7 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase BaseDatos) {
         BaseDatos.execSQL("create table usuario" +
                 "(email string primary key," +
-                "contraseña string not null)");
+                "contraseña string)");
 
         BaseDatos.execSQL("create table pelicula" +
                 "(id string primary key," +
