@@ -100,17 +100,4 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         }
 
     }
-
-    public void crearRelaciones(String email){
-        SQLiteDatabase BaseDatos = this.getWritableDatabase();
-        ContentValues reg = new ContentValues();
-        for(int i=1; i<=7;i++){
-            reg.put("email", email);
-            reg.put("id", String.valueOf(i));
-            reg.put("visto", false);
-            reg.put("gusta",false);
-            BaseDatos.insert("relacion", null, reg);
-        }
-    }
-
 }

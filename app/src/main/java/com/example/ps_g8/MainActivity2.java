@@ -66,7 +66,7 @@ public class MainActivity2 extends AppCompatActivity{
     public void changeBoolean(int id, String email){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-        Cursor c = BaseDatos.rawQuery("select * from relacion", null);
+        Cursor c = BaseDatos.rawQuery("select * from relacion where id =" + id + " and email =" + email, null);
         if (c.moveToFirst() && c.getCount() >= 1) {
 
         }

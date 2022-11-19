@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity5 extends AppCompatActivity {
 
     private EditText et_password1, et_password2, et_email;
@@ -55,7 +57,7 @@ public class MainActivity5 extends AppCompatActivity {
                     et_password1.setText("");
                     et_password2.setText("");
 
-                    ActualizarRelacion(email);
+                    AñadirRelacion(email);
                     Toast.makeText(getApplicationContext(), "Registro completado", Toast.LENGTH_SHORT).show();
 
                     Intent confirmar = new Intent(this, MainActivity.class);
@@ -83,10 +85,22 @@ public class MainActivity5 extends AppCompatActivity {
         }
     }
 
-    private void ActualizarRelacion(String email) {
+    private void AñadirRelacion(String email) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-
+        Cursor c = BaseDatos.rawQuery("select * from pelicula", null);
+        if (c.moveToFirst() && c.getCount() >= 1) {
+            do {
+                @SuppressLint("Range") int id = c.getInt(c.getColumnIndex("id"));
+                ContentValues cv = new ContentValues();
+                cv.put("usuario", email);
+                cv.put("id", id);
+                cv.put("visto", false);
+                cv.put("gusta", false);
+                BaseDatos.insert("relacion", null, cv);
+            } while (c.moveToNext());
+        }
+        c.close();
         BaseDatos.close();
     }
 }
