@@ -55,7 +55,7 @@ public class MainActivity5 extends AppCompatActivity {
                     et_password1.setText("");
                     et_password2.setText("");
 
-                    
+                    ActualizarRelacion(email);
                     Toast.makeText(getApplicationContext(), "Registro completado", Toast.LENGTH_SHORT).show();
 
                     Intent confirmar = new Intent(this, MainActivity.class);
@@ -81,5 +81,12 @@ public class MainActivity5 extends AppCompatActivity {
             BaseDatos.close();
             return false;
         }
+    }
+
+    private void ActualizarRelacion(String email) {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+
+        BaseDatos.close();
     }
 }

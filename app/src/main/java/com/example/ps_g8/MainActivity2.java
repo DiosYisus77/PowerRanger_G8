@@ -51,7 +51,9 @@ public class MainActivity2 extends AppCompatActivity{
         tgbtn1 = view.findViewById(R.id.imageButton1);
         tgbtn1.setImageResource(R.drawable.ic_baseline_favorite_24);
         Pelicula p = (Pelicula) tgbtn1.getTag();
-        Toast.makeText(getApplicationContext(), Integer.toString(p.getId()), Toast.LENGTH_SHORT).show();
+        int id = p.getId();
+        String email = getIntent().getExtras().getString("Usuario");
+        changeBoolean(id, email);
     }
 
     public void visto (View view) {
@@ -61,6 +63,16 @@ public class MainActivity2 extends AppCompatActivity{
         Toast.makeText(getApplicationContext(), Integer.toString(p.getId()), Toast.LENGTH_SHORT).show();
     }
 
+    public void changeBoolean(int id, String email){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+        Cursor c = BaseDatos.rawQuery("select * from relacion", null);
+        if (c.moveToFirst() && c.getCount() >= 1) {
+
+        }
+        c.close();
+        BaseDatos.close();
+    }
     /*public List<Pelicula> GetData() {
         lst=new ArrayList<>();
         lst.add(new Pelicula(1,R.drawable.spiderman,"SPIDERMAN","2002", false, false));

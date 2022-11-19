@@ -40,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
             if (fila.moveToFirst()) {
                 ;
                 BaseDatos.close();
-                Intent busqueda = new Intent(this, MainActivity2.class);
-                startActivity(busqueda);
+                Intent start2 = new Intent(this, MainActivity2.class);
+                start2.putExtra("usuario", email);
+                startActivity(start2);
             } else {
                 Toast.makeText(this, "EROR: Datos introduccions no coinciden con cuenta existente", Toast.LENGTH_SHORT).show();
                 BaseDatos.close();
