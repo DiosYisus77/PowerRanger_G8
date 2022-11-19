@@ -30,10 +30,11 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
         BaseDatos.execSQL("create table relacion" +
                 "(usuario string," +
-                "id string not null," +
+                "id string," +
                 "visto boolean," +
                 "gusta boolean," +
-                "foreign key(usuario) references usuario(email))");
+                "foreign key(usuario) references usuario(email)," +
+                "foreign key(id) references pelicula(id))");
 
         this.agregarPelis(BaseDatos);
     }
