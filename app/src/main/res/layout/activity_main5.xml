@@ -41,7 +41,7 @@
       android:layout_marginTop="300dp"
       android:backgroundTint="#FBE7EC"
       android:fontFamily="monospace"
-      android:onClick="Registrarse"
+      android:onClick="Register"
       android:shadowColor="#3E0808"
       android:shadowDx="40"
       android:shadowDy="40"
@@ -96,7 +96,7 @@
       app:layout_constraintTop_toBottomOf="@+id/logoAppRegistro" />
 
   <EditText
-      android:id="@+id/id_Password2"
+      android:id="@+id/id_Password1"
       android:layout_width="229dp"
       android:layout_height="49dp"
       android:layout_marginTop="12dp"
@@ -116,7 +116,7 @@
       />
 
   <EditText
-      android:id="@+id/id_Password3"
+      android:id="@+id/id_Password2"
       android:layout_width="229dp"
       android:layout_height="49dp"
       android:layout_marginTop="72dp"
