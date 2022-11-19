@@ -41,14 +41,11 @@ public class MainActivity2 extends AppCompatActivity{
         setContentView(R.layout.activity_main2);
 
         lv1 = (ListView) findViewById(R.id.lv1);
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
-        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-        CustomAdapter adapter=new CustomAdapter(this, GetData(BaseDatos));
-        BaseDatos.close();
+
+        CustomAdapter adapter=new CustomAdapter(this, GetData());
         lv1.setAdapter(adapter);
         tgbtn1= (ToggleButton) findViewById(R.id.toggleButtonMeGusta);
         tgbtn2= (ToggleButton) findViewById(R.id.toggleButtonVisto);
-
     }
 
     public void me_gusta (View view) {
@@ -78,11 +75,12 @@ public class MainActivity2 extends AppCompatActivity{
 
         return lst;
     }*/
-    public List<Pelicula> GetData(@NonNull SQLiteDatabase BaseDatos) {
+
+    public List<Pelicula> GetData() {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
         lst = new ArrayList<>();
-        //AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
-        //SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-        Cursor c = BaseDatos.rawQuery("select * from pelis", null);
+        Cursor c = BaseDatos.rawQuery("select * from pelicula", null);
         if (c.moveToFirst() && c.getCount() >= 1) {
             do {
                 @SuppressLint("Range") String titulo = c.getString(c.getColumnIndex("nombre"));
@@ -90,8 +88,8 @@ public class MainActivity2 extends AppCompatActivity{
                 @SuppressLint("Range") int id = c.getInt(c.getColumnIndex("id"));
                 lst.add(new Pelicula(id, R.drawable.jumanji, titulo, año, false, false));
             } while (c.moveToNext());
-
         }
+        BaseDatos.close();
         return lst;
     }
 }
