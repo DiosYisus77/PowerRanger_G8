@@ -86,7 +86,22 @@ public class MainActivity2 extends AppCompatActivity{
                 @SuppressLint("Range") String titulo = c.getString(c.getColumnIndex("nombre"));
                 @SuppressLint("Range") String año = c.getString(c.getColumnIndex("año"));
                 @SuppressLint("Range") int id = c.getInt(c.getColumnIndex("id"));
-                lst.add(new Pelicula(id, R.drawable.jumanji, titulo, año, false, false));
+                switch (id){
+                    case 1:lst.add(new Pelicula(id, R.drawable.spiderman, titulo, año, false, false));
+                    break;
+                    case 2:lst.add(new Pelicula(id, R.drawable.titanic, titulo, año, false, false));
+                    break;
+                    case 3:lst.add(new Pelicula(id, R.drawable.starwars, titulo, año, false, false));
+                    break;
+                    case 4:lst.add(new Pelicula(id, R.drawable.elhombredeacero, titulo, año, false, false));
+                    break;
+                    case 5:lst.add(new Pelicula(id, R.drawable.jumanji, titulo, año, false, false));
+                    break;
+                    case 6:lst.add(new Pelicula(id, R.drawable.sinperdon, titulo, año, false, false));
+                    break;
+                    case 7:lst.add(new Pelicula(id, R.drawable.matrix, titulo, año, false, false));
+                    break;
+                }
             } while (c.moveToNext());
         }
         BaseDatos.close();
