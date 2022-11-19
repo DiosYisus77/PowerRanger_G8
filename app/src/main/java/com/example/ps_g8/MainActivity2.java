@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,11 +27,10 @@ import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity{
 
-    private Database DB = new Database();
     private ListView lv1;
     private List<Pelicula> lst;
-    private ToggleButton tgbtn1;
-    private ToggleButton tgbtn2;
+    private ImageButton tgbtn1;
+    private ImageButton tgbtn2;
 
 
 
@@ -44,23 +44,21 @@ public class MainActivity2 extends AppCompatActivity{
 
         CustomAdapter adapter=new CustomAdapter(this, GetData());
         lv1.setAdapter(adapter);
-        tgbtn1= (ToggleButton) findViewById(R.id.toggleButtonMeGusta);
-        tgbtn2= (ToggleButton) findViewById(R.id.toggleButtonVisto);
+
     }
 
     public void me_gusta (View view) {
-        if (view.getId()==R.id.toggleButtonVisto) {
-            if (tgbtn1.isChecked()){
-
-            }
-        }
+        tgbtn1 = view.findViewById(R.id.imageButton1);
+        tgbtn1.setImageResource(R.drawable.ic_baseline_favorite_24);
+        Pelicula p = (Pelicula) tgbtn1.getTag();
+        Toast.makeText(getApplicationContext(), Integer.toString(p.getId()), Toast.LENGTH_SHORT).show();
     }
-    public void visto (View view) {
-        if (view.getId()==R.id.toggleButtonVisto) {
-            if (tgbtn2.isChecked()){
 
-            }
-        }
+    public void visto (View view) {
+        tgbtn2 = view.findViewById(R.id.imageButton2);
+        tgbtn2.setImageResource(R.drawable.ic_baseline_remove_red_eye_24);
+        Pelicula p = (Pelicula) tgbtn1.getTag();
+        Toast.makeText(getApplicationContext(), Integer.toString(p.getId()), Toast.LENGTH_SHORT).show();
     }
 
     /*public List<Pelicula> GetData() {
@@ -87,23 +85,24 @@ public class MainActivity2 extends AppCompatActivity{
                 @SuppressLint("Range") String año = c.getString(c.getColumnIndex("año"));
                 @SuppressLint("Range") int id = c.getInt(c.getColumnIndex("id"));
                 switch (id){
-                    case 1:lst.add(new Pelicula(id, R.drawable.spiderman, titulo, año, false, false));
+                    case 1:lst.add(new Pelicula(id, R.drawable.spiderman, titulo, año));
                     break;
-                    case 2:lst.add(new Pelicula(id, R.drawable.titanic, titulo, año, false, false));
+                    case 2:lst.add(new Pelicula(id, R.drawable.titanic, titulo, año));
                     break;
-                    case 3:lst.add(new Pelicula(id, R.drawable.starwars, titulo, año, false, false));
+                    case 3:lst.add(new Pelicula(id, R.drawable.starwars, titulo, año));
                     break;
-                    case 4:lst.add(new Pelicula(id, R.drawable.elhombredeacero, titulo, año, false, false));
+                    case 4:lst.add(new Pelicula(id, R.drawable.elhombredeacero, titulo, año));
                     break;
-                    case 5:lst.add(new Pelicula(id, R.drawable.jumanji, titulo, año, false, false));
+                    case 5:lst.add(new Pelicula(id, R.drawable.jumanji, titulo, año));
                     break;
-                    case 6:lst.add(new Pelicula(id, R.drawable.sinperdon, titulo, año, false, false));
+                    case 6:lst.add(new Pelicula(id, R.drawable.sinperdon, titulo, año));
                     break;
-                    case 7:lst.add(new Pelicula(id, R.drawable.matrix, titulo, año, false, false));
+                    case 7:lst.add(new Pelicula(id, R.drawable.matrix, titulo, año));
                     break;
                 }
             } while (c.moveToNext());
         }
+        c.close();
         BaseDatos.close();
         return lst;
     }

@@ -55,6 +55,7 @@ public class MainActivity5 extends AppCompatActivity {
                     et_password1.setText("");
                     et_password2.setText("");
 
+                    
                     Toast.makeText(getApplicationContext(), "Registro completado", Toast.LENGTH_SHORT).show();
 
                     Intent confirmar = new Intent(this, MainActivity.class);

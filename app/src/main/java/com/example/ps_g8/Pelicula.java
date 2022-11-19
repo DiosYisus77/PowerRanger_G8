@@ -6,17 +6,13 @@ public class Pelicula {
     private int imagen;
     private String titulo;
     private String descripcion;
-    private boolean megusta;
-    private boolean visto;
 
 
-    public Pelicula(int id, int imagen, String titulo, String descripcion, boolean megusta, boolean visto) {
+    public Pelicula(int id, int imagen, String titulo, String descripcion){
         this.id = id;
         this.imagen = imagen;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.megusta = megusta;
-        this.visto = visto;
     }
 
     public String getTitulo() {
@@ -45,19 +41,7 @@ public class Pelicula {
         this.imagen = imagen;
     }
 
-    public boolean isMegusta() {
-        return megusta;
-    }
-
-    public void setMegusta(boolean megusta) {
-        this.megusta = megusta;
-    }
-
-    public boolean isVisto() {
-        return visto;
-    }
-
-    public void setVisto(boolean visto) {
-        this.visto = visto;
+    public int getId(){
+        return id;
     }
 }
