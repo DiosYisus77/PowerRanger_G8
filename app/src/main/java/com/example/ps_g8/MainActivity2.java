@@ -53,25 +53,49 @@ public class MainActivity2 extends AppCompatActivity{
         Pelicula p = (Pelicula) tgbtn1.getTag();
         int id = p.getId();
         String email = getIntent().getExtras().getString("Usuario");
-        changeBoolean(id, email);
+        changeBoolean(id, email,"gusta");
     }
 
     public void visto (View view) {
         tgbtn2 = view.findViewById(R.id.imageButton2);
         tgbtn2.setImageResource(R.drawable.ic_baseline_remove_red_eye_24);
         Pelicula p = (Pelicula) tgbtn1.getTag();
+        int id = p.getId();
+        String email = getIntent().getExtras().getString("Usuario");
+        changeBoolean(id, email,"visto");
         Toast.makeText(getApplicationContext(), Integer.toString(p.getId()), Toast.LENGTH_SHORT).show();
     }
 
-    public void changeBoolean(int id, String email){
+    public void changeBoolean(int id, String email,String tipoboton){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
         Cursor c = BaseDatos.rawQuery("select * from relacion where id =" + id + " and email =" + email, null);
-        if (c.moveToFirst() && c.getCount() >= 1) {
-
-        }
+            if(tipoboton.equals("visto")) {
+                if (c.getColumnIndex("visto") == 0) {
+                    BaseDatos.execSQL("update relacion set visto = " + true + " where id =" + id + " and email = " + email, null);
+                } else {
+                    BaseDatos.execSQL("update relacion set visto = " + false + " where id =" + id + " and email = " + email, null);
+                }
+            }else if(tipoboton.equals("gusta")) {
+                if (c.getColumnIndex("gusta") == 0) {
+                    BaseDatos.execSQL("update relacion set visto = " + true + " where id =" + id + " and email = " + email, null);
+                } else {
+                    BaseDatos.execSQL("update relacion set visto = " + false + " where id =" + id + " and email = " + email, null);
+                }
+            }
         c.close();
         BaseDatos.close();
+    }
+
+    public void cargaBotones(String email) {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+        Cursor c = BaseDatos.rawQuery("select * from relacion where email =" + email, null);
+        if (c.moveToFirst() && c.getCount() >= 1) {
+            do {
+
+            } while (c.moveToNext());
+        }
     }
     /*public List<Pelicula> GetData() {
         lst=new ArrayList<>();
