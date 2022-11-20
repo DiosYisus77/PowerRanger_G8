@@ -36,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
         String password = et_password.getText().toString();
 
         if (!email.isEmpty() && !password.isEmpty()) {
-            Cursor fila = BaseDatos.rawQuery("select * from usuario where email =" + email + " and contraseña =" + password, null);
+            Cursor fila = BaseDatos.rawQuery("select * from usuario where email=? and contraseña =?", new String[]{email, password});
             if (fila.moveToFirst()) {
-                ;
                 BaseDatos.close();
                 Intent start2 = new Intent(this, MainActivity2.class);
                 start2.putExtra("usuario", email);
+                Toast.makeText(getApplicationContext(), "BIENVENIDO "+email, Toast.LENGTH_SHORT).show();
                 startActivity(start2);
             } else {
                 Toast.makeText(this, "EROR: Datos introduccions no coinciden con cuenta existente", Toast.LENGTH_SHORT).show();

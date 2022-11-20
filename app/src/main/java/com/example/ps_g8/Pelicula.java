@@ -6,13 +6,17 @@ public class Pelicula {
     private int imagen;
     private String titulo;
     private String descripcion;
+    int gusta;
+    int visto;
 
 
-    public Pelicula(int id, int imagen, String titulo, String descripcion){
+    public Pelicula(int id, int imagen, String titulo, String descripcion, int gusta, int visto){
         this.id = id;
         this.imagen = imagen;
         this.titulo = titulo;
         this.descripcion = descripcion;
+        this.gusta=gusta;
+        this.visto=visto;
     }
 
     public String getTitulo() {

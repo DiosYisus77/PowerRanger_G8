@@ -72,10 +72,10 @@ public class MainActivity5 extends AppCompatActivity {
         }
     }
 
-    public boolean isUsuario(String email) {
+    public boolean isUsuario(String e) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-        Cursor fila = BaseDatos.rawQuery("select email from usuario where email =" + email, null);
+        Cursor fila = BaseDatos.rawQuery("select * from usuario where email =?", new String[]{e});
         if (fila.moveToFirst()) {
             BaseDatos.close();
             return true;
@@ -95,8 +95,8 @@ public class MainActivity5 extends AppCompatActivity {
                 ContentValues cv = new ContentValues();
                 cv.put("usuario", email);
                 cv.put("id", id);
-                cv.put("visto", false);
-                cv.put("gusta", false);
+                cv.put("visto", 0);
+                cv.put("gusta", 0);
                 BaseDatos.insert("relacion", null, cv);
             } while (c.moveToNext());
         }

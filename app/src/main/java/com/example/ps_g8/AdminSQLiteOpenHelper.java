@@ -21,7 +21,7 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase BaseDatos) {
         BaseDatos.execSQL("create table usuario" +
                 "(email string primary key," +
-                "contraseña string)");
+                "contraseña string not null)");
 
         BaseDatos.execSQL("create table pelicula" +
                 "(id string primary key," +
@@ -31,9 +31,9 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         BaseDatos.execSQL("create table relacion" +
                 "(usuario string," +
                 "id string," +
-                "visto boolean," +
-                "gusta boolean," +
-                "foreign key(usuario) references usuario(email)," +
+                "visto int," +
+                "gusta int," +
+                "foreign key(usuario) references usuario(cod_usuario)," +
                 "foreign key(id) references pelicula(id))");
 
         this.agregarPelis(BaseDatos);

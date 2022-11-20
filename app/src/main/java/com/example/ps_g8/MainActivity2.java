@@ -1,6 +1,7 @@
 package com.example.ps_g8;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,62 +43,68 @@ public class MainActivity2 extends AppCompatActivity{
         setContentView(R.layout.activity_main2);
 
         lv1 = (ListView) findViewById(R.id.lv1);
-
         CustomAdapter adapter=new CustomAdapter(this, GetData());
         lv1.setAdapter(adapter);
-
     }
 
     public void me_gusta (View view) {
         tgbtn1 = view.findViewById(R.id.imageButton1);
-        tgbtn1.setImageResource(R.drawable.ic_baseline_favorite_24);
         Pelicula p = (Pelicula) tgbtn1.getTag();
         int id = p.getId();
-        String email = getIntent().getExtras().getString("Usuario");
-        changeBoolean(id, email,"gusta");
+        String email = getIntent().getExtras().getString("usuario");
+        changeBoolean(id, email,0, tgbtn1);
+        //Toast.makeText(getApplicationContext(), Integer.toString(p.getId()), Toast.LENGTH_SHORT).show();
     }
 
     public void visto (View view) {
         tgbtn2 = view.findViewById(R.id.imageButton2);
-        tgbtn2.setImageResource(R.drawable.ic_baseline_remove_red_eye_24);
-        Pelicula p = (Pelicula) tgbtn1.getTag();
+        Pelicula p = (Pelicula) tgbtn2.getTag();
         int id = p.getId();
-        String email = getIntent().getExtras().getString("Usuario");
-        changeBoolean(id, email,"visto");
-        Toast.makeText(getApplicationContext(), Integer.toString(p.getId()), Toast.LENGTH_SHORT).show();
+        String email = getIntent().getExtras().getString("usuario");
+        changeBoolean(id, email,1, tgbtn2);
+        //Toast.makeText(getApplicationContext(), Integer.toString(p.getId()), Toast.LENGTH_SHORT).show();
     }
 
-    public void changeBoolean(int id, String email,String tipoboton){
+    @SuppressLint("Range")
+    public void changeBoolean(int id, String email, int tipo, ImageButton tgbtn){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-        Cursor c = BaseDatos.rawQuery("select * from relacion where id =" + id + " and email =" + email, null);
-            if(tipoboton.equals("visto")) {
-                if (c.getColumnIndex("visto") == 0) {
-                    BaseDatos.execSQL("update relacion set visto = " + true + " where id =" + id + " and email = " + email, null);
+
+        Cursor c = BaseDatos.rawQuery("select * from relacion where id =" + id + " and usuario =?", new String[]{getIntent().getExtras().getString("usuario")});
+        ContentValues cv = new ContentValues();
+        cv.put("usuario", email);
+        cv.put("id", id);
+        if (c.moveToFirst()) {
+            if (tipo == 1) {
+                if (c.getInt(c.getColumnIndex("visto")) == 0) {
+                    cv.put("visto", 1);
+                    cv.put("gusta", c.getInt(c.getColumnIndex("gusta")));
+                    BaseDatos.update("relacion", cv, "id =" + id + " and usuario =?", new String[]{getIntent().getExtras().getString("usuario")});
+                    tgbtn.setImageResource(R.drawable.ic_baseline_remove_red_eye_24);
                 } else {
-                    BaseDatos.execSQL("update relacion set visto = " + false + " where id =" + id + " and email = " + email, null);
+                    cv.put("visto", 0);
+                    cv.put("gusta", c.getInt(c.getColumnIndex("gusta")));
+                    BaseDatos.update("relacion", cv, "id =" + id + " and usuario =?", new String[]{getIntent().getExtras().getString("usuario")});
+                    tgbtn.setImageResource(R.drawable.ic_baseline_not_interested_24);
                 }
-            }else if(tipoboton.equals("gusta")) {
-                if (c.getColumnIndex("gusta") == 0) {
-                    BaseDatos.execSQL("update relacion set visto = " + true + " where id =" + id + " and email = " + email, null);
+            } else if (tipo == 0) {
+                if (c.getInt(c.getColumnIndex("gusta")) == 0) {
+                    cv.put("gusta", 1);
+                    cv.put("visto", c.getInt(c.getColumnIndex("visto")));
+                    BaseDatos.update("relacion", cv, "id =" + id + " and usuario =?", new String[]{getIntent().getExtras().getString("usuario")});
+                    tgbtn.setImageResource(R.drawable.ic_baseline_favorite_24);
                 } else {
-                    BaseDatos.execSQL("update relacion set visto = " + false + " where id =" + id + " and email = " + email, null);
+                    cv.put("gusta", 0);
+                    cv.put("visto", c.getInt(c.getColumnIndex("visto")));
+                    BaseDatos.update("relacion", cv, "id =" + id + " and usuario =?", new String[]{getIntent().getExtras().getString("usuario")});
+                    tgbtn.setImageResource(R.drawable.ic_baseline_favorite_border_24);
                 }
             }
+        }
         c.close();
         BaseDatos.close();
     }
 
-    public void cargaBotones(String email) {
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
-        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-        Cursor c = BaseDatos.rawQuery("select * from relacion where email =" + email, null);
-        if (c.moveToFirst() && c.getCount() >= 1) {
-            do {
-
-            } while (c.moveToNext());
-        }
-    }
     /*public List<Pelicula> GetData() {
         lst=new ArrayList<>();
         lst.add(new Pelicula(1,R.drawable.spiderman,"SPIDERMAN","2002", false, false));
@@ -110,6 +118,7 @@ public class MainActivity2 extends AppCompatActivity{
         return lst;
     }*/
 
+    @SuppressLint("Range")
     public List<Pelicula> GetData() {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
@@ -117,25 +126,34 @@ public class MainActivity2 extends AppCompatActivity{
         Cursor c = BaseDatos.rawQuery("select * from pelicula", null);
         if (c.moveToFirst() && c.getCount() >= 1) {
             do {
+                int gusta = 0;
+                int visto = 0;
                 @SuppressLint("Range") String titulo = c.getString(c.getColumnIndex("nombre"));
                 @SuppressLint("Range") String año = c.getString(c.getColumnIndex("año"));
                 @SuppressLint("Range") int id = c.getInt(c.getColumnIndex("id"));
+                Cursor c2 = BaseDatos.rawQuery("select * from relacion where id =" + id + " and usuario =?", new String[]{getIntent().getExtras().getString("usuario")});
+                if(c2.moveToFirst() && c2.getCount() >= 1){
+                    gusta = c2.getInt(c2.getColumnIndex("gusta"));
+                    visto = c2.getInt(c2.getColumnIndex("visto"));
+                }
+
                 switch (id){
-                    case 1:lst.add(new Pelicula(id, R.drawable.spiderman, titulo, año));
+                    case 1:lst.add(new Pelicula(id, R.drawable.spiderman, titulo, año, gusta, visto));
                     break;
-                    case 2:lst.add(new Pelicula(id, R.drawable.titanic, titulo, año));
+                    case 2:lst.add(new Pelicula(id, R.drawable.titanic, titulo, año, gusta, visto));
                     break;
-                    case 3:lst.add(new Pelicula(id, R.drawable.starwars, titulo, año));
+                    case 3:lst.add(new Pelicula(id, R.drawable.starwars, titulo, año, gusta, visto));
                     break;
-                    case 4:lst.add(new Pelicula(id, R.drawable.elhombredeacero, titulo, año));
+                    case 4:lst.add(new Pelicula(id, R.drawable.elhombredeacero, titulo, año, gusta, visto));
                     break;
-                    case 5:lst.add(new Pelicula(id, R.drawable.jumanji, titulo, año));
+                    case 5:lst.add(new Pelicula(id, R.drawable.jumanji, titulo, año, gusta, visto));
                     break;
-                    case 6:lst.add(new Pelicula(id, R.drawable.sinperdon, titulo, año));
+                    case 6:lst.add(new Pelicula(id, R.drawable.sinperdon, titulo, año, gusta, visto));
                     break;
-                    case 7:lst.add(new Pelicula(id, R.drawable.matrix, titulo, año));
+                    case 7:lst.add(new Pelicula(id, R.drawable.matrix, titulo, año, gusta, visto));
                     break;
                 }
+                c2.close();
             } while (c.moveToNext());
         }
         c.close();

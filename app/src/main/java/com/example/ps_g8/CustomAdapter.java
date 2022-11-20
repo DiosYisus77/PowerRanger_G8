@@ -1,6 +1,8 @@
 package com.example.ps_g8;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,22 +46,29 @@ public class CustomAdapter extends BaseAdapter {
         TextView TextViewDes;
         ImageButton imgbt1, imgbt2;
 
-        Pelicula pelicula=lst.get(i);
+        Pelicula pelicula = lst.get(i);
 
-        if (view==null)
-            view= LayoutInflater.from(context).inflate(R.layout.list_item_pelicula,null);
+        if (view == null)
+            view = LayoutInflater.from(context).inflate(R.layout.list_item_pelicula, null);
 
-        ImageViewPelicula=view.findViewById(R.id.imageViewPelicula);
-        TextViewNombre=view.findViewById(R.id.textViewNombre);
-        TextViewDes=view.findViewById(R.id.textViewDes);
-        imgbt1=view.findViewById(R.id.imageButton1);
-        imgbt2=view.findViewById(R.id.imageButton2);
+        ImageViewPelicula = view.findViewById(R.id.imageViewPelicula);
+        TextViewNombre = view.findViewById(R.id.textViewNombre);
+        TextViewDes = view.findViewById(R.id.textViewDes);
+        imgbt1 = view.findViewById(R.id.imageButton1);
+        imgbt2 = view.findViewById(R.id.imageButton2);
 
         ImageViewPelicula.setImageResource(pelicula.getImagen());
         TextViewNombre.setText(pelicula.getTitulo());
         TextViewDes.setText(pelicula.getDescripcion());
         imgbt1.setTag(pelicula);
         imgbt2.setTag(pelicula);
+        if(pelicula.gusta == 1){
+            imgbt1.setImageResource(R.drawable.ic_baseline_favorite_24);
+        }
+        if(pelicula.visto == 1){
+            imgbt2.setImageResource(R.drawable.ic_baseline_remove_red_eye_24);
+        }
         return view;
     }
 }
+
