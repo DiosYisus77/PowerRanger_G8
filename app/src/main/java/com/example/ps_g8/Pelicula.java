@@ -6,17 +6,21 @@ public class Pelicula {
     private int imagen;
     private String titulo;
     private String descripcion;
+    private String sinopsis;
     int gusta;
     int visto;
 
 
-    public Pelicula(int id, int imagen, String titulo, String descripcion, int gusta, int visto){
+
+    public Pelicula(int id, int imagen, String titulo, String descripcion, String sinopsis, int gusta, int visto){
         this.id = id;
         this.imagen = imagen;
         this.titulo = titulo;
         this.descripcion = descripcion;
+        this.sinopsis=sinopsis;
         this.gusta=gusta;
         this.visto=visto;
+
     }
 
     public String getTitulo() {
@@ -31,6 +35,15 @@ public class Pelicula {
     public String getDescripcion() {
 
         return descripcion;
+    }
+
+    public String getSinopsis() {
+
+        return sinopsis;
+    }
+
+    public void setSinopsis(String sinopsis) {
+        this.sinopsis = sinopsis;
     }
 
     public void setDescripcion(String genero) {

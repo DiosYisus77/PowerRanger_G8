@@ -44,6 +44,7 @@ public class CustomAdapter extends BaseAdapter {
         ImageView ImageViewPelicula;
         TextView TextViewNombre;
         TextView TextViewDes;
+        TextView TextViewSinopsis;
         ImageButton imgbt1, imgbt2;
 
         Pelicula pelicula = lst.get(i);
@@ -54,12 +55,14 @@ public class CustomAdapter extends BaseAdapter {
         ImageViewPelicula = view.findViewById(R.id.imageViewPelicula);
         TextViewNombre = view.findViewById(R.id.textViewNombre);
         TextViewDes = view.findViewById(R.id.textViewDes);
+        TextViewSinopsis = view.findViewById(R.id.textViewSinopsis);
         imgbt1 = view.findViewById(R.id.imageButton1);
         imgbt2 = view.findViewById(R.id.imageButton2);
 
         ImageViewPelicula.setImageResource(pelicula.getImagen());
         TextViewNombre.setText(pelicula.getTitulo());
         TextViewDes.setText(pelicula.getDescripcion());
+        TextViewSinopsis.setText(pelicula.getSinopsis());
         imgbt1.setTag(pelicula);
         imgbt2.setTag(pelicula);
         if(pelicula.gusta == 1){

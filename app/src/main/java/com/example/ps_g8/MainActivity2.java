@@ -129,6 +129,7 @@ public class MainActivity2 extends AppCompatActivity{
                 int gusta = 0;
                 int visto = 0;
                 @SuppressLint("Range") String titulo = c.getString(c.getColumnIndex("nombre"));
+                @SuppressLint("Range") String sinopsis = c.getString(c.getColumnIndex("sinopsis"));
                 @SuppressLint("Range") String año = c.getString(c.getColumnIndex("año"));
                 @SuppressLint("Range") int id = c.getInt(c.getColumnIndex("id"));
                 Cursor c2 = BaseDatos.rawQuery("select * from relacion where id =" + id + " and usuario =?", new String[]{getIntent().getExtras().getString("usuario")});
@@ -138,19 +139,19 @@ public class MainActivity2 extends AppCompatActivity{
                 }
 
                 switch (id){
-                    case 1:lst.add(new Pelicula(id, R.drawable.spiderman, titulo, año, gusta, visto));
+                    case 1:lst.add(new Pelicula(id, R.drawable.spiderman, titulo, año,  sinopsis, gusta, visto));
                     break;
-                    case 2:lst.add(new Pelicula(id, R.drawable.titanic, titulo, año, gusta, visto));
+                    case 2:lst.add(new Pelicula(id, R.drawable.titanic, titulo, año, sinopsis ,gusta, visto));
                     break;
-                    case 3:lst.add(new Pelicula(id, R.drawable.starwars, titulo, año, gusta, visto));
+                    case 3:lst.add(new Pelicula(id, R.drawable.starwars, titulo, año, sinopsis, gusta, visto));
                     break;
-                    case 4:lst.add(new Pelicula(id, R.drawable.elhombredeacero, titulo, año, gusta, visto));
+                    case 4:lst.add(new Pelicula(id, R.drawable.elhombredeacero, titulo, año, sinopsis, gusta, visto));
                     break;
-                    case 5:lst.add(new Pelicula(id, R.drawable.jumanji, titulo, año, gusta, visto));
+                    case 5:lst.add(new Pelicula(id, R.drawable.jumanji, titulo, año, sinopsis, gusta, visto));
                     break;
-                    case 6:lst.add(new Pelicula(id, R.drawable.sinperdon, titulo, año, gusta, visto));
+                    case 6:lst.add(new Pelicula(id, R.drawable.sinperdon, titulo, año, sinopsis, gusta, visto));
                     break;
-                    case 7:lst.add(new Pelicula(id, R.drawable.matrix, titulo, año, gusta, visto));
+                    case 7:lst.add(new Pelicula(id, R.drawable.matrix, titulo, año, sinopsis, gusta, visto));
                     break;
                 }
                 c2.close();
