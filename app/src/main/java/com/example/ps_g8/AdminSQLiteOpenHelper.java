@@ -49,7 +49,7 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                     reg.put("id", String.valueOf(i));
                     reg.put("nombre", "SPIDERMAN");
                     reg.put("año", "2002");
-                    reg.put("sinopsis", "sinopsis de la peli");
+                    reg.put("sinopsis", "sinopsis de la peli 1");
                     BaseDatos.insert("pelicula", null, reg);
                     break;
 
@@ -57,7 +57,7 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                     reg.put("id", String.valueOf(i));
                     reg.put("nombre", "TITANIC");
                     reg.put("año", "1997");
-                    reg.put("sinopsis", "sinopsis de la peli");
+                    reg.put("sinopsis", "sinopsis de la peli 2");
                     BaseDatos.insert("pelicula", null, reg);
                     break;
 
@@ -65,7 +65,7 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                     reg.put("id", String.valueOf(i));
                     reg.put("nombre", "STAR WARS");
                     reg.put("año", "1977");
-                    reg.put("sinopsis", "sinopsis de la peli");
+                    reg.put("sinopsis", "sinopsis de la peli 3");
                     BaseDatos.insert("pelicula", null, reg);
                     break;
 
@@ -73,7 +73,7 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                     reg.put("id", String.valueOf(i));
                     reg.put("nombre", "EL HOMBRE DE ACERO");
                     reg.put("año", "2013");
-                    reg.put("sinopsis", "sinopsis de la peli");
+                    reg.put("sinopsis", "sinopsis de la peli 4");
                     BaseDatos.insert("pelicula", null, reg);
                     break;
 
@@ -81,7 +81,7 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                     reg.put("id", String.valueOf(i));
                     reg.put("nombre", "JUMANJI");
                     reg.put("año", "1995");
-                    reg.put("sinopsis", "sinopsis de la peli");
+                    reg.put("sinopsis", "sinopsis de la peli 5");
                     BaseDatos.insert("pelicula", null, reg);
                     break;
 
@@ -89,7 +89,7 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                     reg.put("id", String.valueOf(i));
                     reg.put("nombre", "SIN PERDÓN");
                     reg.put("año", "1992");
-                    reg.put("sinopsis", "sinopsis de la peli");
+                    reg.put("sinopsis", "sinopsis de la peli 6");
                     BaseDatos.insert("pelicula", null, reg);
                     break;
 
@@ -97,7 +97,7 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                     reg.put("id", String.valueOf(i));
                     reg.put("nombre", "MATRIX");
                     reg.put("año", "1999");
-                    reg.put("sinopsis", "sinopsis de la peli");
+                    reg.put("sinopsis", "sinopsis de la peli 7");
                     BaseDatos.insert("pelicula", null, reg);
                     break;
             }
