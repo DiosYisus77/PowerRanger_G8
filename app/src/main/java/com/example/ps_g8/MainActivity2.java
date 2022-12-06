@@ -2,9 +2,12 @@ package com.example.ps_g8;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -103,6 +106,7 @@ public class MainActivity2 extends AppCompatActivity{
         }
         c.close();
         BaseDatos.close();
+
     }
 
     /*public List<Pelicula> GetData() {
@@ -161,5 +165,29 @@ public class MainActivity2 extends AppCompatActivity{
         BaseDatos.close();
         return lst;
     }
+
+    @Override public boolean onCreateOptionsMenu(Menu menuOpciones) {
+
+        getMenuInflater().inflate(R.menu.acordeon_opciones, menuOpciones);
+
+        return true;
+    }
+    
+    @Override public boolean onOptionsItemSelected(MenuItem opcion_Menu){
+        int id= opcion_Menu.getItemId();
+        if (id == R.id.logout){
+            Intent start1 = new Intent(this, MainActivity.class);
+            startActivity(start1);
+            return true;
+        }
+        if (id == R.id.borrarCuenta){
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(opcion_Menu);
+    }
+    
+    
 }
 

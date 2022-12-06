@@ -10,7 +10,6 @@
 
   <ImageView
       android:id="@+id/background_Registro"
-      android:layout_width="1021dp"
       android:layout_height="1023dp"
       android:src="@drawable/background_lineas"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -39,7 +38,7 @@
       android:layout_width="229dp"
       android:layout_height="49dp"
       android:layout_marginTop="300dp"
-      android:backgroundTint="#FBE7EC"
+      android:backgroundTint="@color/blanquito"
       android:fontFamily="monospace"
       android:onClick="Register"
       android:shadowColor="#3E0808"
