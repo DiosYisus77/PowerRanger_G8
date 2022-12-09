@@ -24,7 +24,6 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                 "contraseña string not null)");
 
         BaseDatos.execSQL("create table pelicula(id string primary key,nombre string not null, año string not null, sinopsis string not null)");
-
         BaseDatos.execSQL("create table relacion" +
                 "(usuario string," +
                 "id string," +
@@ -32,7 +31,6 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                 "gusta int," +
                 "foreign key(usuario) references usuario(cod_usuario)," +
                 "foreign key(id) references pelicula(id))");
-
         this.agregarPelis(BaseDatos);
     }
 
@@ -102,6 +100,5 @@ public final class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                     break;
             }
         }
-
     }
 }

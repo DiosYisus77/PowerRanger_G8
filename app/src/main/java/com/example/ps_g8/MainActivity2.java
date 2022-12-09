@@ -181,13 +181,21 @@ public class MainActivity2 extends AppCompatActivity{
             return true;
         }
         if (id == R.id.borrarCuenta){
-
+            eliminar();
+            Intent start1 = new Intent(this, MainActivity.class);
+            startActivity(start1);
             return true;
         }
 
         return super.onOptionsItemSelected(opcion_Menu);
     }
     
-    
+    public void eliminar(){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+
+        BaseDatos.delete("usuario", "email =?", new String[]{getIntent().getExtras().getString("usuario")});
+        BaseDatos.close();
+    }
 }
 
