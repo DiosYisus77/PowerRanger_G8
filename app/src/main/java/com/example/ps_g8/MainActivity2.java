@@ -1,7 +1,9 @@
 package com.example.ps_g8;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -181,21 +183,32 @@ public class MainActivity2 extends AppCompatActivity{
             return true;
         }
         if (id == R.id.borrarCuenta){
-            eliminar();
-            Intent start1 = new Intent(this, MainActivity.class);
-            startActivity(start1);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure you want to delete your account?");
+            builder.setTitle("Delete Account");
+            builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick (DialogInterface dialog, int which){
+
+
+                }
+            });
+
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick (DialogInterface dialog, int which){
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
             return true;
         }
 
         return super.onOptionsItemSelected(opcion_Menu);
     }
     
-    public void eliminar(){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
-        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-
-        BaseDatos.delete("usuario", "email =?", new String[]{getIntent().getExtras().getString("usuario")});
-        BaseDatos.close();
-    }
+    
 }
 
