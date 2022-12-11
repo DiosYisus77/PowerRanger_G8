@@ -38,7 +38,7 @@ public class MainActivity2 extends AppCompatActivity{
     private List<Pelicula> lst;
     private ImageButton tgbtn1;
     private ImageButton tgbtn2;
-
+    private Button btn1;
 
 
     @SuppressLint("MissingInflatedId")
@@ -68,6 +68,15 @@ public class MainActivity2 extends AppCompatActivity{
         String email = getIntent().getExtras().getString("usuario");
         changeBoolean(id, email,1, tgbtn2);
         //Toast.makeText(getApplicationContext(), Integer.toString(p.getId()), Toast.LENGTH_SHORT).show();
+    }
+
+    public void mas_detalles (View view) {
+        btn1 = view.findViewById(R.id.button1);
+        Pelicula p = (Pelicula) btn1.getTag();
+        int id = p.getId();
+        String email = getIntent().getExtras().getString("usuario");
+        Intent start6 = new Intent(this, MainActivity6.class);
+        startActivity(start6);
     }
 
     @SuppressLint("Range")
@@ -208,7 +217,6 @@ public class MainActivity2 extends AppCompatActivity{
 
         return super.onOptionsItemSelected(opcion_Menu);
     }
-    
-    
+
 }
 
