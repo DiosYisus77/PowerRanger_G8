@@ -200,8 +200,7 @@ public class MainActivity2 extends AppCompatActivity{
             builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick (DialogInterface dialog, int which){
-
-
+                    borrarCuenta();
                 }
             });
 
@@ -218,6 +217,15 @@ public class MainActivity2 extends AppCompatActivity{
         }
 
         return super.onOptionsItemSelected(opcion_Menu);
+    }
+
+    public void borrarCuenta(){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+        BaseDatos.delete("usuario", "email =?", new String[]{getIntent().getExtras().getString("usuario")});
+        BaseDatos.close();
+        Intent start1 = new Intent(this,MainActivity.class);
+        startActivity(start1);
     }
 
 }
