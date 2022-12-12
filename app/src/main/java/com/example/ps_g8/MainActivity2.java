@@ -76,6 +76,8 @@ public class MainActivity2 extends AppCompatActivity{
         int id = p.getId();
         String email = getIntent().getExtras().getString("usuario");
         Intent start6 = new Intent(this, MainActivity6.class);
+        start6.putExtra("pelicula", id);
+        start6.putExtra("usuario", email);
         startActivity(start6);
     }
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,6 +59,7 @@ public class CustomAdapter extends BaseAdapter {
         TextViewSinopsis = view.findViewById(R.id.textViewSinopsis);
         imgbt1 = view.findViewById(R.id.imageButton1);
         imgbt2 = view.findViewById(R.id.imageButton2);
+        Button bt = view.findViewById(R.id.button1);
 
         ImageViewPelicula.setImageResource(pelicula.getImagen());
         TextViewNombre.setText(pelicula.getTitulo());
@@ -65,6 +67,7 @@ public class CustomAdapter extends BaseAdapter {
         TextViewSinopsis.setText(pelicula.getSinopsis());
         imgbt1.setTag(pelicula);
         imgbt2.setTag(pelicula);
+        bt.setTag(pelicula);
         if(pelicula.gusta == 1){
             imgbt1.setImageResource(R.drawable.ic_baseline_favorite_24);
         }
