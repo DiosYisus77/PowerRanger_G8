@@ -21,7 +21,7 @@ public class MainActivity6 extends AppCompatActivity {
     TextView tit,sin,year;
     View view;
 
-    @Override
+    @Override  /*m*/
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main6);
