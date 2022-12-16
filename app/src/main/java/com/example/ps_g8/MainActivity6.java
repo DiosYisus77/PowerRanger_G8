@@ -25,17 +25,15 @@ public class MainActivity6 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main6);
-        img.findViewById(R.id.imagen);
-        tit.findViewById(R.id.titulo);
-        sin.findViewById(R.id.sinopsis);
-        year.findViewById(R.id.año);
+        img = findViewById(R.id.imagen);
+        tit = findViewById(R.id.titulo);
+        sin =findViewById(R.id.sinopsis);
+        year=findViewById(R.id.año);
 
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Administracion", null, 1);
         SQLiteDatabase BaseDatos = admin.getWritableDatabase();
-        btn1 = view.findViewById(R.id.button1);
-        Pelicula p = (Pelicula) btn1.getTag();
-        int idPelicula = p.getId();
-        Cursor c = BaseDatos.rawQuery("select * from pelicula where id=idPelicula", null);
+        int idPelicula = getIntent().getExtras().getInt("pelicula");
+        Cursor c = BaseDatos.rawQuery("select * from pelicula where id =" + idPelicula, null);
         if (c.moveToFirst() && c.getCount() >= 1) {
             @SuppressLint("Range") String titulo = c.getString(c.getColumnIndex("nombre"));
             tit.setText(titulo);
