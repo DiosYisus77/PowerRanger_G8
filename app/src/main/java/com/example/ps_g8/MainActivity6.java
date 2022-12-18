@@ -79,6 +79,7 @@ public class MainActivity6 extends AppCompatActivity {
 
         public void volverListadoPelis (View view){
             Intent volver = new Intent(this, MainActivity2.class);
+            volver.putExtra("usuario", this.getIntent().getExtras().getString("usuario"));
             startActivity(volver);
         }
     }

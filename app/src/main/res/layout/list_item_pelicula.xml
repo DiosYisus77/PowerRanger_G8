@@ -36,12 +36,6 @@
             android:gravity="center|left"
             android:text="TextView" />
 
-        <TextView
-            android:id="@+id/textViewSinopsis"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="50"
-            android:text="TextView" />
     </LinearLayout>
 
     <LinearLayout
